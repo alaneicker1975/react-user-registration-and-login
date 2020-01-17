@@ -1,12 +1,15 @@
 export const initialState = { 
-  loggedIn: false,
+  isLoggedIn: false,
 };
 
 export const reducer = (state, action) => {
   switch (action.type) {
-    case 'CHECK_USER_AUTH':
-      // Check if user is logged in and update state
-      return { ...state, loggedIn };
+    case 'SET_AUTH_TOKEN':
+      // Logic to set cookie
+      return { ...state, isLoggedIn };
+    case 'SET_AUTH_TOKEN':
+      // Logic to logout user
+      return { ...state, isLoggedIn: false };
     default:
       return state;
   }
