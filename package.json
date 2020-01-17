@@ -4,7 +4,11 @@
   "description": "An Express and React user registration and login API",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build:server": "NODE_ENV=production babel -d ./dist/server ./server -s",
+    "start:server": "NODE_ENV=development nodemon --exec babel-node ./server",
+    "start:dev": "parcel src/index.html",
+    "start": "NODE_ENV=production node ./dist/server",
+    "migrate": "node ./migrate.js"
   },
   "keywords": [],
   "author": "",
