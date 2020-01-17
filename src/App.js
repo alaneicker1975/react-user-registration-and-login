@@ -1,9 +1,9 @@
 import React, { createContext, useReducer } from "react";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import Login from './components/login';
-import Dashboard from './components/dashboard';
-import Register from './components/register';
+import Login from './pages/login';
+import Dashboard from './pages/dashboard';
+import Register from './pages/register';
 
 import { reducer, initialState } from './reducers';
 
