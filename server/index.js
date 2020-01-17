@@ -4,7 +4,7 @@ import cors from 'cors';
 import express from 'express';
 
 import userLoginRoute from './routes/user/login';
-import userVerifyRoute from './routes/user/validate';
+import userVerifyRoute from './routes/user/verify';
 
 const baseUrl = '/api/v1';
 const PORT = process.env.PORT || 6060;
