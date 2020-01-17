@@ -6,10 +6,10 @@ const Dashboard = () => {
   const { state, dispatch } = useContext(AppContext);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    
     // If page is refreshed, re-verify user and set user
     if (performance.navigation.type == 1) {
+      const token = localStorage.getItem('token');
+
       verifyUser(token)
         .then(res => res.json())
         .then(({ isLoggedIn, user }) => {
