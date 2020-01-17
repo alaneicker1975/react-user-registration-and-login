@@ -1,16 +1,15 @@
 export const initialState = { 
-  isLoggedIn: false,
+  isLoggedIn: true,
   user: null,
 };
 
 export const reducer = (state, action) => {
-  const { token, user } = action.payload;
+  const { isLoggedIn, user } = action.payload;
 
   switch (action.type) {
-    case 'SET_AUTH_TOKEN':
-      localStorage.setItem('token', token);
-      return { ...state, isLoggedIn: true };
-    case 'UNSET_AUTH_TOKEN':
+    case 'SET_USER_AS_LOGGED_IN':
+      return { ...state, isLoggedIn };
+    case 'SET_USER_AS_LOGGED_OUT':
       localStorage.removeItem('token');
       return { ...state, isLoggedIn: false };
     case 'SET_USER':
