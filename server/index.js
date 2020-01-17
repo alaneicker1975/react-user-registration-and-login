@@ -4,7 +4,7 @@ import cors from 'cors';
 import express from 'express';
 
 import userLoginRoute from './routes/user/login';
-import userValidateRoute from './routes/user/validate';
+import userVerifyRoute from './routes/user/validate';
 
 const baseUrl = '/api/v1';
 const PORT = process.env.PORT || 6060;
@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(express.static('dist'));
 
 app.use(`${baseUrl}/user`, userLoginRoute);
-app.use(`${baseUrl}/user`, userValidateRoute);
+app.use(`${baseUrl}/user`, userVerifyRoute);
 
 app.listen(PORT, () => {
   console.log('App listening on:', PORT);

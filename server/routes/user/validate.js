@@ -4,7 +4,7 @@ import jwtSignature from '../../jwt-signature';
 
 const router = Router();
 
-router.post('/validate', (req, res) => {
+router.post('/verify', (req, res) => {
   const token = req.body.token;
 
   if (token) {
