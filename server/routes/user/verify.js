@@ -10,12 +10,12 @@ router.post('/verify', (req, res) => {
   if (token) {
     jwt.verify(token, jwtSignature, (err, decoded) => {
       if (!err && decoded !== undefined) {
-        return res.send({ isLoggedIn: true, user: decoded });
+        return res.send({ isLoggedIn: true });
       }
     });
   }
 
-  return res.send({ isLoggedIn: false, user: null });
+  return res.send({ isLoggedIn: false });
 });
 
 export default router;

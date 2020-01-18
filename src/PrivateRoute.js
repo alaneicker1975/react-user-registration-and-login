@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-import { verifyUser } from './actions/verify-user';
+import { verifyUserToken } from './actions/verify-user';
 import { AppContext } from './App';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -11,17 +11,21 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     // If page is refreshed, re-verify user and set user
     if (performance.navigation.type == 1) {
       const token = localStorage.getItem('token');
+      
+      if (token) {
+        verifyUserToken(token)
+          .then(res => res.json())
+          .then(({ isLoggedIn }) => {
+            if (!isLoggedIn) {
+              dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
+            } else {
+              dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
+            }
+          });
+        return;
+      }
 
-      verifyUser(token)
-        .then(res => res.json())
-        .then(({ token, err, username }) => {
-          if (!token || err) {
-            dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
-          } else {
-            dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
-            dispatch({ type: 'SET_USER', payload: { username } });
-          }
-        });
+      dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
     }
   }, []);
 

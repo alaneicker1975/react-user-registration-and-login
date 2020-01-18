@@ -1,4 +1,4 @@
-export const verifyUser = (token) => {
+export const verifyUserToken = (token) => {
   return fetch('http://localhost:6060/api/v1/user/verify', {
     method: 'POST',
     headers: {
