@@ -8,7 +8,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
   const { state, dispatch } = useContext(AppContext);
 
   useEffect(() => {
-    // If page is refreshed, re-verify user and set user
+    // This code will run only if page is reloaded
     if (performance.navigation.type == 1) {
       const token = localStorage.getItem('token');
       
