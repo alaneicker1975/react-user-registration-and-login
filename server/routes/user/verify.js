@@ -7,15 +7,13 @@ const router = Router();
 router.post('/verify', (req, res) => {
   const token = req.body.token;
 
-  if (token) {
-    jwt.verify(token, jwtSignature, (err, decoded) => {
-      if (!err && decoded !== undefined) {
-        return res.send({ isLoggedIn: true });
-      }
-    });
-  }
+  jwt.verify(token, jwtSignature, (err, decoded) => {
+    if (err || decoded === undefined) {
+      res.send({ isLoggedIn: false });
+    }
 
-  return res.send({ isLoggedIn: false });
+    res.send({ isLoggedIn: true });
+  });
 });
 
 export default router;
