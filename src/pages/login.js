@@ -5,14 +5,14 @@ import { AppContext } from '../App';
 
 const Login = () => {
   const { dispatch } = useContext(AppContext);
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [redirect, setRedirect] = useState(false);
   
   const handleLoginSuccess = () => {
     dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
-    setLoggedIn(true);
+    setRedirect(true);
   }
 
-  return loggedIn
+  return redirect
     ? <Redirect to="/dashboard" />
     : (
       <Fragment>
