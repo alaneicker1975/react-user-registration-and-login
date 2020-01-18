@@ -15,12 +15,12 @@ const LoginForm = (props) => {
 
 LoginForm.propTypes = {
   onValidationSuccess: PropTypes.func,
-  loginError: PropTypes.bool,
+  loginError: PropTypes.string,
 };
 
 LoginForm.defaultProps = {
   onValidationSuccess: () => {},
-  loginError: false,
+  loginError: '',
 };
 
 export default LoginForm;

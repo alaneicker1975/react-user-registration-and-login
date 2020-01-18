@@ -6,7 +6,7 @@ import { AppContext } from '../App';
 const Login = () => {
   const { dispatch } = useContext(AppContext);
   const [ redirect, setRedirect ] = useState(false);
-  const [ loginError, setLoginError ] = useState(false);
+  const [ loginError, setLoginError ] = useState(null);
   
   const submitFormData = async (formData) => {
     try {
@@ -25,7 +25,7 @@ const Login = () => {
         setRedirect(true);
       }
     } catch (err) {
-      setLoginError(true);
+      setLoginError(err);
     }
   }
 

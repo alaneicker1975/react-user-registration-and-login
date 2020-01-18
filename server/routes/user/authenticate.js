@@ -12,20 +12,20 @@ router.post('/authenticate', async (req, res) => {
     const data = await db.get('SELECT password FROM Users WHERE username = ?', username);
 
     if (!data) {
-      throw new Error('username not found');
+      throw new Error('Username does not exist');
     }
 
     const isValid = await passwordHash.compare(password, data.password);
     
-    if (isValid) {
-      const token = jwt.sign({ username }, jwtSignature, {
-        expiresIn: 1800, // expires in 30 minutes
-      });
-
-      res.status(200).send({ token });
+    if (!invalid) {
+      throw new Error('Username or password is invalid');
     }
 
-    res.status(200).send({});
+    const token = jwt.sign({ username }, jwtSignature, {
+      expiresIn: 1800, // expires in 30 minutes
+    });
+
+    res.status(200).send({ token });
   } catch (err) {
     res.status(500).send({ err });
   }
