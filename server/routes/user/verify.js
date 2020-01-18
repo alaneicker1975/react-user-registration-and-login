@@ -9,10 +9,10 @@ router.post('/verify', (req, res) => {
 
   jwt.verify(token, jwtSignature, (err, decoded) => {
     if (err || decoded === undefined) {
-      res.send({ isLoggedIn: false });
+      res.send({ isValid: false });
     }
 
-    res.send({ isLoggedIn: true });
+    res.send({ isValid: true });
   });
 });
 
