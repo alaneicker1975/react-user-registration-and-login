@@ -3,8 +3,8 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import express from 'express';
 
-import userLoginRoute from './routes/user/login';
-import userVerifyRoute from './routes/user/verify';
+import authenticateUserRoute from './routes/user/authenticate';
+import verifyUserRoute from './routes/user/verify';
 
 const baseUrl = '/api/v1';
 const PORT = process.env.PORT || 6060;
@@ -14,8 +14,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static('dist'));
 
-app.use(`${baseUrl}/user`, userLoginRoute);
-app.use(`${baseUrl}/user`, userVerifyRoute);
+app.use(`${baseUrl}/user`, authenticateUserRoute);
+app.use(`${baseUrl}/user`, verifyUserRoute);
 
 app.listen(PORT, () => {
   console.log('App listening on:', PORT);

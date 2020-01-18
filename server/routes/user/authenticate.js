@@ -6,7 +6,7 @@ import passwordHash from 'bcrypt-password-hash';
 
 const router = Router();
 
-outes.post('/login', async (req, res) => {
+outes.post('/authenticate', async (req, res) => {
   try {
     const { username, password } = req.body;
     const data = await db.get('SELECT password FROM Users WHERE username = ?', username);
