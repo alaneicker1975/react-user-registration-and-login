@@ -2,7 +2,9 @@ import React from 'react';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 
-const LoginForm = () => {
+const LoginForm = (props) => {
+  const { onLoginSuccess } = props;
+  
   return (
     <form>
       Login form
