@@ -17,7 +17,7 @@ router.post('/authenticate', async (req, res) => {
 
     const isValid = await passwordHash.compare(password, data.password);
     
-    if (!invalid) {
+    if (!isValid) {
       throw new Error('Username or password is invalid');
     }
 
