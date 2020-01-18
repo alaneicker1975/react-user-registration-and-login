@@ -7,12 +7,14 @@ import passwordHash from 'bcrypt-password-hash';
 const router = Router();
 
 outes.post('/login', async (req, res) => {
-  const { username, password } = req.body;
-  const data = await db.get('SELECT password FROM Users WHERE username = ?', username);
-  
-  if (data === undefined) {
-    res.status(200).send({ isLoggedIn: false });
-  } else {
+  try {
+    const { username, password } = req.body;
+    const data = await db.get('SELECT password FROM Users WHERE username = ?', username);
+
+    if (!data) {
+      throw new Error('username not found');
+    }
+
     const isValid = await passwordHash.compare(password, data.password);
     
     if (isValid) {
@@ -20,15 +22,12 @@ outes.post('/login', async (req, res) => {
         expiresIn: 1800, // expires in 30 minutes
       });
 
-      const now = new Date();
-      now.setTime(now.getTime() + 1 * 3600 * 1000);
-
-      return res
-        .status(200)
-        .send({ isLoggedIn: true, token });
+      res.status(200).send({ token, username });
     }
 
-    return res.status(200).send({ isLoggedIn: false });
+    res.status(200).send({});
+  } catch (err) {
+    res.status(500).send({ err });
   }
 });
 
