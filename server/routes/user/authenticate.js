@@ -22,7 +22,7 @@ outes.post('/authenticate', async (req, res) => {
         expiresIn: 1800, // expires in 30 minutes
       });
 
-      res.status(200).send({ token, username });
+      res.status(200).send({ token });
     }
 
     res.status(200).send({});
