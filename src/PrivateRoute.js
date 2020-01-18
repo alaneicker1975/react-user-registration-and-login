@@ -14,11 +14,12 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
       verifyUser(token)
         .then(res => res.json())
-        .then(({ token, username }) => {
-          if (!token) {
+        .then(({ token, err, username }) => {
+          if (!token || err) {
             dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
           } else {
             dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
+            dispatch({ type: 'SET_USER', payload: { username } });
           }
         });
     }
