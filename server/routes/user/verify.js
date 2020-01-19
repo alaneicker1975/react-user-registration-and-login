@@ -8,12 +8,8 @@ router.get('/verify', (req, res) => {
   const { cookies: { token } } = req;
 
   jwt.verify(token, jwtSignature, (err, decoded) => {
-    if (err || decoded === undefined) {
-      res.send({ isValid: false });
-    }
- 
-    res.send({ isValid: true });
+    res.send({ isValid: err || decoded === undefined ? false : true });
   });
 });
-
+  1
 export default router;

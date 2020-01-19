@@ -19,6 +19,11 @@ app.use(express.static('dist'));
 app.use(`${baseUrl}/user`, authenticateUserRoute);
 app.use(`${baseUrl}/user`, verifyUserRoute);
 
+// app.get('/clearCookie', (req, res) => {
+//   res.clearCookie('token');
+//   res.send('foo');
+// });
+
 app.listen(PORT, () => {
   console.log('App listening on:', PORT);
 });
