@@ -10,7 +10,7 @@ const Login = () => {
   
   const submitFormData = async (formData) => {
     try {
-      const { token } = fetch('http://localhost:6060/api/v1/user/authenticate', {
+      const { token } = await fetch('http://localhost:6060/api/v1/user/authenticate', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -25,7 +25,7 @@ const Login = () => {
         setRedirect(true);
       }
     } catch (err) {
-      setLoginError(err);
+      setLoginError(err.message);
     }
   }
 
