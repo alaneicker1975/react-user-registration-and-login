@@ -8,43 +8,28 @@ const Dashboard = () => {
   useEffect(() => {
     // This code will run only if page is reloaded
     if (performance.navigation.type == 1) {
-      const token = localStorage.getItem('token');
-      
       const verifyUser = async () => {
         let isValid = false;
-
+        
         try {
-          const userVerification = await fetch('http://localhost:6060/api/v1/user/verify', {
-            method: 'POST',
-            headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ token }),
-          });
-
+          const userVerification = await fetch('http://localhost:6060/api/v1/user/verify');
           const response = await response.json();
 
           isValid = userVerification.isValid;
 
           return isValid;
         } catch {
-          return isValid;
+          return false;
         }
       };
 
-      if (token) {
-        const isValidUser = verifyUser();
-
-        if (!isValidUser) {
-          dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
-        } else {
-          dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
-        }
-        return;
-      } 
-
-      dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
+      const isValidUser = verifyUser();
+      
+      if (!isValidUser) {
+        dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
+      } else {
+        dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
+      }
     }
   }, []);
 
