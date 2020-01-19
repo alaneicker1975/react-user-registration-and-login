@@ -1,8 +1,6 @@
 import React, { createContext, useReducer } from "react";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
-import PrivateRoute from './PrivateRoute';
-
 import Login from './pages/login';
 import Dashboard from './pages/dashboard';
 import Register from './pages/register';
@@ -20,7 +18,7 @@ const App = () => {
         <Route path="/" component={Login} exact />
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <PrivateRoute path="/dashboard" component={Dashboard} />
+        <Route path="/dashboard" component={Dashboard} />
       </Router>
     </AppContext.Provider>
   );
