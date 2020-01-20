@@ -8,7 +8,7 @@ const validationSchema = yup.object().shape({
   password: yup.string().required('Required'),
 });
 
-const LoginForm = (props) => {
+const UserForm = (props) => {
   const { onValidationSuccess, loginError } = props;
 
   const {
@@ -53,14 +53,14 @@ const LoginForm = (props) => {
   );
 }
 
-LoginForm.propTypes = {
+UserForm.propTypes = {
   onValidationSuccess: PropTypes.func,
   loginError: PropTypes.string,
 };
 
-LoginForm.defaultProps = {
+UserForm.defaultProps = {
   onValidationSuccess: () => {},
   loginError: '',
 };
 
-export default LoginForm;
+export default UserForm;

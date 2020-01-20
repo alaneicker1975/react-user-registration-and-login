@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useContext } from 'react';
 import { Redirect } from 'react-router-dom';
-import LoginForm from '../components/login-form';
+import UserForm from '../components/user-form';
 import { AppContext } from '../App';
 
 const Login = () => {
@@ -33,7 +33,7 @@ const Login = () => {
     : (
       <Fragment>
         <h1>Login</h1>
-        <LoginForm 
+        <UserForm 
           onValidationSuccess={submitFormData} 
           loginError={loginError}
         />
