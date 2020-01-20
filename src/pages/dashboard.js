@@ -9,13 +9,17 @@ const Dashboard = () => {
     // This code will run only if page is reloaded
     if (performance.navigation.type == 1) {
       const verifyUser = async () => {        
-        const userVerification = await fetch('http://localhost:6060/api/v1/user/verify');
-        const { isValid, error } = await userVerification.json();
+        try {
+          const userVerification = await fetch('http://localhost:6060/api/v1/user/verify');
+          const { isValid, error } = await userVerification.json();
 
-        if (error || !isValid) {
+          if (error || !isValid) {
+            dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
+          } else {
+            dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
+          }
+        } catch {
           dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
-        } else {
-          dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
         }
       };
 
