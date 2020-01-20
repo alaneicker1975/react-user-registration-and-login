@@ -10,7 +10,7 @@ const Login = () => {
   
   const submitFormData = async (formData) => {
     try {
-      const { token } = await fetch('http://localhost:6060/api/v1/user/authenticate', {
+      const { isLoggedIn } = await fetch('http://localhost:6060/api/v1/user/authenticate', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -19,8 +19,7 @@ const Login = () => {
         body: JSON.stringify({ formData }),
       });
 
-      if (token) {
-        localStorage.setItem('token', token);
+      if (isLoggedIn) {
         dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
         setRedirect(true);
       }

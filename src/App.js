@@ -1,5 +1,5 @@
 import React, { createContext, useReducer } from "react";
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Login from './pages/login';
 import Dashboard from './pages/dashboard';

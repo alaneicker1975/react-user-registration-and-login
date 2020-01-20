@@ -25,7 +25,10 @@ router.post('/authenticate', async (req, res) => {
       expiresIn: 1800, // expires in 30 minutes
     });
 
-    res.status(200).send({ token });
+    res
+      .cookie('token', token)
+      .status(200)
+      .send({ isLoggedIn: true });
   } catch (err) {
     res.status(500).send({ err });
   }
