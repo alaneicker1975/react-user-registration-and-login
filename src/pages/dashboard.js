@@ -11,15 +11,17 @@ const Dashboard = () => {
       const verifyUser = async () => {        
         try {
           const userVerification = await fetch('http://localhost:6060/api/v1/user/verify');
-          const response = await userVerification.json();
+          const { isValid, error } = await userVerification.json();
           
-          if (!response.isValid) {
+          if (error) {
             dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
-          } else {
+          } 
+          
+          if (isValid) {
             dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
           }
         } catch {
-          return false;
+          dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
         }
       };
 

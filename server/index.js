@@ -20,6 +20,13 @@ app.use(express.static('dist'));
 app.use(`${baseUrl}/user`, authenticateUserRoute);
 app.use(`${baseUrl}/user`, verifyUserRoute);
 
+// Catchs all errors thrown and sends them
+// as part of the response object
+app.use((error, req, res, next) => {
+  res.status(500).json({ error: error.message });
+});
+
+// Allows React routes to render is page is refreshed
 app.get('/*', (req, res) => {
   res.sendFile(path.join(process.cwd(), 'dist/index.html'), (err) => {
     if (err) {
