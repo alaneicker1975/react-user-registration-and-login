@@ -14,14 +14,11 @@ const Dashboard = () => {
           const { isValid, error } = await userVerification.json();
        
           if (error || !isValid) {
-            throw new Error('Invalid or no user token');
-          } 
-          
-          if (isValid) {
+            dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
+          } else {
             dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
           }
         } catch (error) {
-          console.log(error.message);
           dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
         }
       };
