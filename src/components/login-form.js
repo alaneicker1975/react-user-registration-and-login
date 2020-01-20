@@ -48,6 +48,7 @@ const LoginForm = (props) => {
           values={values.password}
         />
       </div>
+      <button type="submit">Submit</button>
     </form>
   );
 }

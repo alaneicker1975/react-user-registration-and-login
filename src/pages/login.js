@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useContext } from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import LoginForm from '../components/login-form';
 import { AppContext } from '../App';
 
@@ -33,7 +33,6 @@ const Login = () => {
     : (
       <Fragment>
         <h1>Login</h1>
-        <Link to="/dashboard">Login</Link>
         <LoginForm 
           onValidationSuccess={submitFormData} 
           loginError={loginError}
