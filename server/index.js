@@ -6,6 +6,7 @@ import express from 'express';
 import path from 'path';
 
 import authenticateUserRoute from './routes/user/authenticate';
+import createUserRoute from './routes/user/create';
 import verifyUserRoute from './routes/user/verify';
 
 const baseUrl = '/api/v1';
@@ -18,6 +19,7 @@ app.use(cookieParser());
 app.use(express.static('dist'));
 
 app.use(`${baseUrl}/user`, authenticateUserRoute);
+app.use(`${baseUrl}/user`, createUserRoute);
 app.use(`${baseUrl}/user`, verifyUserRoute);
 
 // Catchs all errors thrown and sends them
