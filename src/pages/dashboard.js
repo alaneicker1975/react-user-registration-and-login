@@ -12,9 +12,9 @@ const Dashboard = () => {
         try {
           const userVerification = await fetch('http://localhost:6060/api/v1/user/verify');
           const { isValid, error } = await userVerification.json();
-        
+       
           if (error || !isValid) {
-            throw new Error('Invalid user token');
+            throw new Error('Invalid or no user token');
           } 
           
           if (isValid) {

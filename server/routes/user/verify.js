@@ -7,8 +7,8 @@ const router = Router();
 router.get('/verify', (req, res) => {
   const { cookies: { token } } = req;
 
-  jwt.verify(token, jwtSignature, (err, decoded) => {
-    res.send({ isValid: err || decoded === undefined ? false : true });
+  jwt.verify(token, jwtSignature, (error, decoded) => {
+    res.send({ isValid: error || decoded === undefined ? false : true });
   });
 });
   1
