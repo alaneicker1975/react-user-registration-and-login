@@ -29,6 +29,7 @@ const LoginForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit} noValidate>
+      {loginError ? <div>{loginError}</div> : null}
       <div>
         <label htmlFor="username">Password</label>
         <input
