@@ -29,7 +29,7 @@ app.use((error, req, res, next) => {
 });
 
 // Allows React routes to render is page is refreshed
-app.get('/*', (req, res) => {
+app.get('/:type(dashboard|login|register)', (req, res) => {
   res.sendFile(path.join(process.cwd(), 'dist/index.html'), (error) => {
     if (error) {
       res.status(500).send(error)
