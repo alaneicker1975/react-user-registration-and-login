@@ -2,7 +2,7 @@ import React, { Fragment, useContext, useEffect } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { AppContext } from '../App';
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   const { state, dispatch } = useContext(AppContext);
   
   useEffect(() => {
@@ -12,7 +12,7 @@ const Dashboard = () => {
         try {
           const userVerification = await fetch('http://localhost:6060/api/v1/user/verify');
           const { isValid, error } = await userVerification.json();
-          
+         
           if (error || !isValid) {
             dispatch({ type: 'SET_ERROR', payload: { error: 'Invalid token' }});
             dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
@@ -21,7 +21,8 @@ const Dashboard = () => {
           }
         } catch (error) {
           dispatch({ type: 'SET_ERROR', payload: { error: error.message }});
-          dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
+          dispatch({ type: 'SET_USER_AS_LOGGED_OUt' });
+          props.history.push('/login');
         }
       };
 
