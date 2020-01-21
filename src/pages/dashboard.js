@@ -12,14 +12,16 @@ const Dashboard = () => {
         try {
           const userVerification = await fetch('http://localhost:6060/api/v1/user/verify');
           const { isValid, error } = await userVerification.json();
-
+          
           if (error || !isValid) {
             dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
+            dispatch({ type: 'SET_ERROR', payload: { error: 'Invalid token' }});
           } else {
             dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
           }
-        } catch {
-          dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
+        } catch (error) {
+          dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
+          dispatch({ type: 'SET_ERROR', payload: { error: error.message }});
         }
       };
 

@@ -5,6 +5,8 @@ import Login from './pages/login';
 import Dashboard from './pages/dashboard';
 import Register from './pages/register';
 
+import Alert from './components/alert';
+
 import { reducer, initialState } from './reducers';
 
 export const AppContext = createContext({});
@@ -14,6 +16,7 @@ const App = () => {
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>
+      {state.error ? <Alert type="error" text={state.error} /> : null}
       <Router>
         <Route path="/" component={Login} exact />
         <Route path="/login" component={Login} />

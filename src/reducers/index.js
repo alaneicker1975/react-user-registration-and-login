@@ -1,5 +1,5 @@
 export const initialState = { 
-  isLoggedIn: false,
+  isLoggedIn: true,
   username: '',
   error: null,
 };
@@ -15,7 +15,7 @@ export const reducer = (state, action) => {
     case 'SET_USER':
       return { ...state, username: payload.username };
     case 'SET_ERROR':
-      return { ...state, error: payload.error },
+      return { ...state, error: payload.error };
     default:
       return state;
   }
