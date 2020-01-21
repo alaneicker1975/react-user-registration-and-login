@@ -1,6 +1,7 @@
 export const initialState = { 
   isLoggedIn: false,
   username: '',
+  error: null,
 };
 
 export const reducer = (state, action) => {
@@ -13,6 +14,8 @@ export const reducer = (state, action) => {
       return { ...state, isLoggedIn: false };
     case 'SET_USER':
       return { ...state, username: payload.username };
+    case 'SET_ERROR':
+      return { ...state, error: payload.error },
     default:
       return state;
   }
