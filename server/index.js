@@ -28,7 +28,8 @@ app.use((error, req, res, next) => {
   res.status(500).json({ error: error.message });
 });
 
-// Allows React routes to render is page is refreshed
+// Allows React routes to render is page is refreshed.
+// This will only apply to the paths specified in the route regex.
 app.get('/:type(dashboard|login|register)', (req, res) => {
   res.sendFile(path.join(process.cwd(), 'dist/index.html'), (error) => {
     if (error) {
