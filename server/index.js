@@ -30,24 +30,24 @@ app.use((error, req, res, next) => {
 
 // Allows React routes to render is page is refreshed
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(process.cwd(), 'dist/index.html'), (err) => {
-    if (err) {
-      res.status(500).send(err)
+  res.sendFile(path.join(process.cwd(), 'dist/index.html'), (error) => {
+    if (error) {
+      res.status(500).send(error)
     }
   })
 });
 
-// app.get('/set-token', (req, res) => {
-//   console.log('token set');
-//   res
-//     .cookie('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1NzkyOTI4MTEsImV4cCI6MTYxMDgyODgxMSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.khqDGt2n7FPMmgToEE_aNIZkTvOdn6UeVQnSjaD6waw')
-//     .send({ foo: 'bar' });
-// });
+app.get('/set-token', (req, res) => {
+  console.log('token set');
+  res
+    .cookie('token', 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJPbmxpbmUgSldUIEJ1aWxkZXIiLCJpYXQiOjE1NzkyOTI4MTEsImV4cCI6MTYxMDgyODgxMSwiYXVkIjoid3d3LmV4YW1wbGUuY29tIiwic3ViIjoianJvY2tldEBleGFtcGxlLmNvbSIsIkdpdmVuTmFtZSI6IkpvaG5ueSIsIlN1cm5hbWUiOiJSb2NrZXQiLCJFbWFpbCI6Impyb2NrZXRAZXhhbXBsZS5jb20iLCJSb2xlIjpbIk1hbmFnZXIiLCJQcm9qZWN0IEFkbWluaXN0cmF0b3IiXX0.khqDGt2n7FPMmgToEE_aNIZkTvOdn6UeVQnSjaD6waw')
+    .send({ foo: 'bar' });
+});
 
-// app.get('/clear-token', (req, res) => {
-//   res.clearCookie('token');
-//   res.send('foo');
-// });
+app.get('/clear-token', (req, res) => {
+  res.clearCookie('token');
+  res.send({ foo: 'bar' });
+});
 
 app.listen(PORT, () => {
   console.log('App listening on:', PORT);
