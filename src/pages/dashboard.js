@@ -12,7 +12,7 @@ const Dashboard = (props) => {
         try {
           const userVerification = await fetch('http://localhost:6060/api/v1/user/verify');
           const { isValid, error } = await userVerification.json();
-          throw new Error('random error');
+          
           if (error || !isValid) {
             dispatch({ type: 'SET_ERROR', payload: { error: 'Invalid token' }});
             dispatch({ type: 'SET_USER_AS_LOGGED_OUT' });
