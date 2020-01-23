@@ -15,6 +15,7 @@ const Register = (props) => {
       <h1>Register</h1>
       <UserForm
         onValidationSuccess={submitFormData}
+        errorMessage={errorMessage}
       />
     </Fragment>
   );
