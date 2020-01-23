@@ -10,7 +10,7 @@ const Login = () => {
   
   const submitFormData = async (formData) => {
     try {
-      const { isLoggedIn } = await fetch('http://localhost:6060/api/v1/user/authenticate', {
+      const response = await fetch('http://localhost:6060/api/v1/user/authenticate', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -18,11 +18,15 @@ const Login = () => {
         },
         body: JSON.stringify({ formData }),
       });
+      
+      const { isLoggedIn, error } = await response.json();
 
-      if (isLoggedIn) {
-        dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
-        setRedirect(true);
+      if (!isLoggedIn || error) {
+        throw new Error(error || 'Username or password is invalid!');
       }
+      
+      dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
+      setRedirect(true);
     } catch (err) {
       setLoginError(err.message);
     }

@@ -35,6 +35,7 @@ const UserForm = (props) => {
         <input
           id="username"
           name="username"
+          type="text"
           onChange={handleChange}
           values={values.username}
         />
@@ -44,6 +45,7 @@ const UserForm = (props) => {
         <input
           id="password"
           name="password"
+          type="password"
           onChange={handleChange}
           values={values.password}
         />
