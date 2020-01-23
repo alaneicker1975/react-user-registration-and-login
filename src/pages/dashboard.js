@@ -11,7 +11,7 @@ const Dashboard = (props) => {
         const { isValid, username, error } = await userVerification.json();
     
         if (error || !isValid) {
-          dispatch({ type: 'SET_ERROR', payload: { error: 'Invalid token' }});
+          dispatch({ type: 'SET_ERROR', payload: { error: 'You\'ve been logged out' }});
           props.history.push('/');
         } else {
           dispatch({ type: 'SET_USER', payload: { username } });
