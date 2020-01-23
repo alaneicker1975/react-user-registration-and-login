@@ -8,7 +8,7 @@ const Dashboard = (props) => {
     const verifyUser = async () => {     
       try {
         const userVerification = await fetch('http://localhost:6060/api/v1/user/verify');
-        const { isValid, username, error } = await userVerification.json();
+        const { error, isValid, username } = await userVerification.json();
     
         if (error || !isValid) {
           dispatch({ type: 'SET_GLOBAL_MESSAGE', payload: { message: 'You\'ve been logged out' }});
