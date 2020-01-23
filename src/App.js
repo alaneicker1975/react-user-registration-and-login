@@ -9,7 +9,7 @@ import Alert from './components/alert';
 
 import { reducer, initialState } from './reducers';
 
-// import './styles/app.scss';
+import './styles/app.scss';
 
 export const AppContext = createContext({});
 
