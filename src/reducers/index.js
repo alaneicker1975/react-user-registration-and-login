@@ -1,6 +1,6 @@
 export const initialState = { 
   username: null,
-  error: null,
+  message: null,
 };
 
 export const reducer = (state, action) => {
@@ -9,8 +9,8 @@ export const reducer = (state, action) => {
   switch (action.type) {
     case 'SET_USER':
       return { ...state, username: payload.username };
-    case 'SET_ERROR':
-      return { ...state, error: payload.error };
+    case 'SET_GLOBAL_MESSAGE':
+      return { ...state, message: payload.message };
     default:
       return state;
   }

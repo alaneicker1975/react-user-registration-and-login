@@ -16,7 +16,7 @@ const App = () => {
 
   return (
     <AppContext.Provider value={{ state, dispatch }}>
-      {state.error ? <Alert type="error" text={state.error} /> : null}
+      {state.message ? <Alert type="error" text={state.message} /> : null}
       <Router>
         <Route path="/" component={Login} exact />
         <Route path="/login" component={Login} />

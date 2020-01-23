@@ -11,13 +11,13 @@ const Dashboard = (props) => {
         const { isValid, username, error } = await userVerification.json();
     
         if (error || !isValid) {
-          dispatch({ type: 'SET_ERROR', payload: { error: 'You\'ve been logged out' }});
+          dispatch({ type: 'SET_GLOBAL_MESSAGE', payload: { message: 'You\'ve been logged out' }});
           props.history.push('/');
         } else {
           dispatch({ type: 'SET_USER', payload: { username } });
         }
       } catch (error) {
-        dispatch({ type: 'SET_ERROR', payload: { error: error.message }});
+        dispatch({ type: 'SET_GLOBAL_MESSAGE', payload: { message: error.message }});
         props.history.push('/');
       }
     };
