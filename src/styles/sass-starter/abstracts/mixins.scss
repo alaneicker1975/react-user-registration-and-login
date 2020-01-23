@@ -1,0 +1,64 @@
+@mixin appearance-reset {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+@mixin focus-outline {
+  box-shadow: rem(0 0 0 3) $blue-100;
+}
+
+@mixin radio-button-focus-outline {
+  box-shadow: rem(0 0 0 3) $blue-100, inset 0 0 0 rem(6) $blue-200;
+}
+
+@mixin radio-button-checked-outline {
+  box-shadow: inset 0 0 0 rem(6) $blue-200;
+}
+
+@mixin form-option {
+  background-color: $white;
+  border: $input-border;
+  height: rem(22);
+  width: rem(22);
+  outline: 0;
+}
+
+@mixin input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: $white;
+  border: $input-border;
+  border-radius: rem($base-border-radius);
+  height: rem($input-height);
+  font-size: inherit;
+  font-family: inherit;
+  padding: rem(8);
+  outline: 0;
+  width: 100%;
+
+  &:focus {
+    @include focus-outline();
+  }
+
+  &--has-error {
+    border-color: $red-100;
+  }
+
+  @each $name, $size in $input-sizes {
+    &--#{$name} {
+      width: rem($size);
+    }
+  }
+
+  @each $name, $breakpoint in $breakpoints {
+    @media(min-width: $breakpoint) {
+      @each $size in $input-sizes {
+        &--#{$size}\@#{$name} {
+          width: rem($size);
+        }
+      }
+    }
+  }
+}

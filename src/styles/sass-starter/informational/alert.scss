@@ -1,0 +1,13 @@
+.alert {
+  background-color: $gray-200;
+  font-size: rem($root-font-size);
+  font-weight: $font-bold;
+  padding: rem(8 16);
+
+  @each $name, $color in $alert-colors {
+    &--#{name} {
+      background-color: $color;
+      color: $white;
+    }
+  }
+}

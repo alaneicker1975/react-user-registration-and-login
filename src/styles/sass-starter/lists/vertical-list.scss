@@ -1,0 +1,11 @@
+.v-list {
+  & > * + * {
+    margin-top: rem(4);
+  }
+  
+  @each $increment in $list-spacing {
+    &--spacing-#{$increment} > * + * {
+      margin-top: rem($increment);
+    }
+  }
+}

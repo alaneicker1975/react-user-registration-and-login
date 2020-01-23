@@ -1,0 +1,92 @@
+@mixin flexbox {
+  display: flex;
+  flex-wrap: wrap;
+  
+  @each $increment in $spacing-increments {
+    &--hr-#{$increment} > * + * {
+      margin-left: rem($increment);
+    }
+  }
+
+  &--nowrap {
+    flex-wrap: nowrap;
+  }
+  
+  &--inline {
+    display: inline-flex;
+  }
+  
+  &--align-middle {
+    align-items: center;
+  }
+  
+  &--align-bottom {
+    align-items: bottom;
+  }
+  
+  &--justify-center {
+    justify-content: center;
+  }
+  
+  &--space-between {
+    justify-content: space-between;
+  }
+  
+  &--space-around {
+    justify-content: space-around;
+  }
+  
+  &--equalColumns > * {
+    flex: 1;
+  }
+  
+  &--nowrap {
+    flex-wrap: nowrap;
+  }
+
+  &--right-col-fixed\@100 {
+    & > :first-child {
+      flex: rem(100) 0 0;
+    }
+  }
+
+  &--right-col-fixed\@200 {
+    & > :first-child {
+      flex: rem(200) 0 0;
+    }
+  }
+
+  &--right-col-fixed\@300 {
+    & > :first-child {
+      flex: rem(300) 0 0;
+    }
+  }
+  
+  &__item--grow {
+    flex: 1;
+  }
+  
+  &__item--no-shrink {
+    flex-shrink: 0;
+  }
+}
+
+.flex {
+  @include flexbox();
+
+  @each $name, $breakpoint in $breakpoints {
+    @media(min-width: $breakpoint) {
+      &\@#{$name} {
+        @include flexbox();
+      }
+    }
+    
+    @media(max-width: $breakpoint) {
+      &\@#{$name} {
+        &[class*="--hr"] > * + * {
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}

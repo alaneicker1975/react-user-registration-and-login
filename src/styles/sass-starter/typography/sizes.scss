@@ -1,0 +1,13 @@
+@each $font-size in $font-sizes {
+  .text-size-#{$font-size} {
+    font-size: rem($font-size);
+  }
+
+  @each $name, $breakpoint in $breakpoints {
+    @media(min-width: $breakpoint) {
+      .text-size-#{$font-size}\@#{$name} {
+        font-size: rem($font-size);
+      }
+    }
+  }
+}

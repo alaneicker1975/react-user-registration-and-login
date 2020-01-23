@@ -1,0 +1,17 @@
+.radio-button {
+  @include appearance-reset();
+  @include form-option();
+  border-radius: 50%;
+
+  &:focus {
+    @include focus-outline();
+  }
+
+  &:checked:focus {
+    @include radio-button-focus-outline();
+  }
+
+  &:checked {
+    @include radio-button-checked-outline();
+  }
+}

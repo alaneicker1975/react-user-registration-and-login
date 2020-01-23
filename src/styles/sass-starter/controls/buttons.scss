@@ -1,0 +1,68 @@
+button.btn,
+a.btn {
+  border: rem(1) solid $blue-400;
+  border-radius: rem($base-border-radius);
+  background: $white;
+  color: $blue-400;
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: rem($root-font-size);
+  outline: 0;
+  padding: rem(12 24);
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .3s linear;
+  
+  &:hover {
+    background: $blue-000;
+  }
+  
+  &:focus,
+  &:active {
+    background: $blue-000;
+    @include focus-outline();
+  }
+  
+  &:disabled,
+  &:disabled:hover,
+  &:disabled:focus,
+  &:disabled:active {
+    background: $gray-200;
+    color: $gray-400;
+    box-shadow: 0;
+    cursor: default;
+  }
+
+  &--pill {
+    border-radius: rem($input-height);
+  }
+  
+  &--block {
+    display: block;
+    width: 100%;
+  }
+
+  @each $name, $map in $button-sizes {
+    &--#{$name} {
+      padding: rem(map-get($map, padding));
+      min-height: rem(map-get($map, min-height));
+      font-size: rem(map-get($map, font-size));
+    }
+  }
+  
+  @each $name, $map in $btn-colors {
+    &--#{$name} {
+      background: map-get($map, background-color);
+      color: map-get($map, font-color);
+      border: 0;
+      
+      &:active,
+      &:focus,
+      &:hover {
+        background: darken(map-get($map, background-color), 15%);
+      }
+    }
+  }
+}

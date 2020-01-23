@@ -1,0 +1,8 @@
+.hint {
+  color: $gray-400;
+  font-size: rem(11);
+
+  &--error {
+    color: $red-100;
+  }
+}

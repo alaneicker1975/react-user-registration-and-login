@@ -1,0 +1,15 @@
+@each $alignment in $text-alignment-options {
+  .text-align-#{$alignment} {
+    text-align: $alignment;
+  }
+}
+
+@each $alignment in $text-alignment-options {
+  @each $name, $breakpoint in $breakpoints {
+    @media(min-width: $breakpoint) {
+      .text-align-#{$alignment}\@#{$name} {
+        text-align: $alignment !important;
+      }
+    }
+  }
+}

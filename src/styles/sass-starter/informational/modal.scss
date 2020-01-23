@@ -1,0 +1,87 @@
+.modal {
+  background-color: rgba(0,0,0,0.75);
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+
+  &.is-open {
+    display: flex;
+  }
+
+  &__dialog {
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: rem(16);
+    max-height: 95%;
+  }
+
+  &__header {
+    padding: rem(16);
+    border-bottom: rem(1) solid $gray-200;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__footer {
+    padding: rem(16);
+    border-top: rem(1) solid $gray-200;
+  }
+
+  &__title {
+    text-transform: uppercase;
+    font-size: rem(22);
+    font-weight: $font-medium;
+  }
+
+  &__close-button {
+    background: transparent no-repeat center center/80% url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iMzQ4LjMzM3B4IiBoZWlnaHQ9IjM0OC4zMzRweCIgdmlld0JveD0iMCAwIDM0OC4zMzMgMzQ4LjMzNCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMzQ4LjMzMyAzNDguMzM0OyINCgkgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQoJPHBhdGggZmlsbD0iIzMzMzMzMyIgZD0iTTMzNi41NTksNjguNjExTDIzMS4wMTYsMTc0LjE2NWwxMDUuNTQzLDEwNS41NDljMTUuNjk5LDE1LjcwNSwxNS42OTksNDEuMTQ1LDAsNTYuODUNCgkJYy03Ljg0NCw3Ljg0NC0xOC4xMjgsMTEuNzY5LTI4LjQwNywxMS43NjljLTEwLjI5NiwwLTIwLjU4MS0zLjkxOS0yOC40MTktMTEuNzY5TDE3NC4xNjcsMjMxLjAwM0w2OC42MDksMzM2LjU2Mw0KCQljLTcuODQzLDcuODQ0LTE4LjEyOCwxMS43NjktMjguNDE2LDExLjc2OWMtMTAuMjg1LDAtMjAuNTYzLTMuOTE5LTI4LjQxMy0xMS43NjljLTE1LjY5OS0xNS42OTgtMTUuNjk5LTQxLjEzOSwwLTU2Ljg1DQoJCWwxMDUuNTQtMTA1LjU0OUwxMS43NzQsNjguNjExYy0xNS42OTktMTUuNjk5LTE1LjY5OS00MS4xNDUsMC01Ni44NDRjMTUuNjk2LTE1LjY4Nyw0MS4xMjctMTUuNjg3LDU2LjgyOSwwbDEwNS41NjMsMTA1LjU1NA0KCQlMMjc5LjcyMSwxMS43NjdjMTUuNzA1LTE1LjY4Nyw0MS4xMzktMTUuNjg3LDU2LjgzMiwwQzM1Mi4yNTgsMjcuNDY2LDM1Mi4yNTgsNTIuOTEyLDMzNi41NTksNjguNjExeiIvPg0KPC9zdmc+DQo=');
+    border: 0;
+    cursor: pointer;
+    height: rem(32);
+    width: rem(32);
+    padding: 0;
+    outline: 0;
+    text-indent: rem(-10000);
+
+    &:focus {
+      @include focus-outline();
+    }
+  }
+
+  &__body {
+    flex: 1;
+    padding: rem(16);
+    overflow: auto;
+  }
+  
+  @each $theme-name, $map in $modal-themes {
+    &--#{theme-name} {
+      &__dialog {
+        background-color: map-get($map, background-color);
+        color: map-get($map, font-color);
+      }
+
+      &__header,
+      &__footer {
+        border-color: rgba(255,255,255,0.5);
+      }
+    }
+  }
+
+  @media (min-width: $breakpoint-medium) {
+    &__dialog {
+      max-width: 70%;
+      max-height: 80%;
+      margin: 0;
+    }
+  }
+}

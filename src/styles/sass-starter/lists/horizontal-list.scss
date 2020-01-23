@@ -1,0 +1,15 @@
+.h-list {
+  & > * {
+    display: inline-block;
+  }
+
+  & > * + * {
+    margin-left: rem(4);
+  }
+
+  @each $increment in $list-spacing {
+    &--spacing-#{$increment} > * + * {
+      margin-left: rem($increment);
+    }
+  }
+}

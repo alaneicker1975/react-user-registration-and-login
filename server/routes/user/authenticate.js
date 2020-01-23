@@ -10,7 +10,6 @@ const invalidAuthError = 'Username or password is invalid';
 
 router.post('/authenticate', async (req, res) => {
   try {
-    console.log(req.body);
     const { username, password } = req.body;
 
     const db = await dbPromise;

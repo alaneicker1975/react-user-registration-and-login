@@ -1,0 +1,49 @@
+@each $increment in $spacing-increments {
+  .margin-#{$increment} {
+    margin: rem($increment);
+  }
+  
+  .margin-top-#{$increment} {
+    margin-top: rem($increment);
+  }
+  
+  .margin-bottom-#{$increment} {
+    margin-bottom: rem($increment);
+  }
+  
+  .margin-left-#{$increment} {
+    margin-left: rem($increment);
+  }
+  
+  .margin-right-#{$increment} {
+    margin-right: rem($increment);
+  }
+
+  @each $name, $breakpoint in $breakpoints {
+    @media(min-width: $breakpoint) {
+      .margin-collapse\@#{$name} {
+        margin: 0;
+      }
+      
+      .margin-#{$increment}\@#{$name} {
+        margin: rem($increment);
+      }
+      
+      .margin-top-#{$increment}\@#{$name} {
+        margin-top: rem($increment);
+      }
+      
+      .margin-bottom-#{$increment}\@#{$name} {
+        margin-bottom: rem($increment);
+      }
+      
+      .margin-left-#{$increment}\@#{$name} {
+        margin-left: rem($increment);
+      }
+      
+      .margin-right-#{$increment}\@#{$name} {
+        margin-right: rem($increment);
+      }
+    }
+  }
+}

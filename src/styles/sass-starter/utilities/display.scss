@@ -1,0 +1,15 @@
+@each $value in $display-options {
+  .display-#{$value} {
+    display: $value;
+  }
+}
+
+@each $name, $breakpoint in $breakpoints {
+  @media(min-width: $breakpoint) {
+    @each $value in $display-options {
+      .display-#{$value}\@#{name} {
+        display: $value;
+      }
+    }
+  }
+}

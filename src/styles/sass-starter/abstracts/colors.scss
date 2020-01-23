@@ -1,0 +1,85 @@
+$black: #222 !default;
+$white: #fff !default;
+$gray-100: #f5f5f5 !default;
+$gray-200: #ccc !default;
+$gray-300: #999 !default;
+$gray-400: #666 !default;
+$gray-500: #323232 !default;
+$red-100: #fd4445 !default;
+$red-200: #d62223 !default;
+$orange-100: #ff8400 !default;
+$green-100: #4fa009 !default;
+$green-200: #307c01 !default;
+$blue-000: #dbeefc;
+$blue-100: #88ccfc !default;
+$blue-200: #0c78af !default;
+$blue-300: #01547f !default;
+$blue-400: #2c607f !default;
+$blue-500: #2b2b3a !default;
+
+$light-gray: #dedede;
+
+$alert-colors: (
+  info: $blue-200,
+  confirmation: $green-100,
+  error: $red-100,
+  warning: $orange-100,
+) !default;
+
+$text-colors: (
+  black: $black,
+  white: $white,
+  gray: $gray-300,
+  red: $red-100,
+  green: $green-100,
+  blue: $blue-200,
+  navy: $blue-400
+) !default;
+
+$btn-colors: (
+  primary: (
+    background-color: $blue-200, 
+    font-color: $white
+  ),
+  secondary: (
+    background-color: $green-100,
+    font-color: $white
+  ),
+  tertiary: (
+    background-color: $red-100,
+    font-color: $white
+  )
+) !default;
+
+$background-colors: (
+  red: $red-100,
+  green: $green-100,
+  light-blue: $blue-100,
+  medium-blue: $blue-200,
+  dark-blue: $blue-400,
+  light-navy: lighten($blue-400, 10%),
+  light-gray: $gray-100,
+  medium-gray: $gray-300,
+  dark-gray: $gray-500,
+  black: $black,
+  white: $white
+) !default;
+
+$modal-themes: (
+  info: (
+    background-color: $blue-200,
+    font-color: $white
+  ),
+  confirmation: (
+    background-color: $green-100,
+    font-color: $white
+  ),
+  error: (
+    background-color: $red-100,
+    font-color: $white
+  ),
+  warning: (
+    background-color: $orange-100,
+    font-color: $white
+  ),
+) !default;

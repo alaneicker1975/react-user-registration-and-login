@@ -1,0 +1,45 @@
+@each $increment in $spacing-increments {
+  .padding-#{$increment} {
+    padding: rem($increment);
+  }
+  
+  .padding-top-#{$increment} {
+    padding-top: rem($increment);
+  }
+  
+  .padding-bottom-#{$increment} {
+    padding-bottom: rem($increment);
+  }
+  
+  .padding-left-#{$increment} {
+    padding-left: rem($increment);
+  }
+  
+  .padding-right-#{$increment} {
+    padding-right: rem($increment);
+  }
+
+  @each $name, $breakpoint in $breakpoints {
+    @media(min-width: $breakpoint) {
+      .padding-#{$increment}\@#{$name} {
+        padding: rem($increment);
+      }
+      
+      .padding-top-#{$increment}\@#{$name} {
+        padding-top: rem($increment);
+      }
+      
+      .padding-bottom-#{$increment}\@#{$name} {
+        padding-bottom: rem($increment);
+      }
+      
+      .padding-left-#{$increment}\@#{$name} {
+        padding-left: rem($increment);
+      }
+      
+      .padding-right-#{$increment}\@#{$name} {
+        padding-right: rem($increment);
+      }
+    }
+  }
+}

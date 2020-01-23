@@ -1,0 +1,108 @@
+// Default font
+$base-font-family:  'Montserrat', Arial, Helvetica, sans-serif !default;
+$font-bitter: 'Bitter', Arial, Helvetica, sans-serif !default;
+
+// Root font size
+$root-font-size: 16 !default;
+
+// Default line-height
+$default-line-height: 1.8 !default;
+
+// Text alignment
+$text-alignment-options: left right center !default;
+
+// Font sizes
+$font-sizes: 12 14 16 20 24 30 36 42 48 !default;
+
+// Font weights
+$font-normal: 400 !default;
+$font-normal-italic: 400i !default;
+$font-medium: 500 !default;
+$font-medium-italic: 500i !default;
+$font-semibold: 600 !default;
+$font-semibold-italic: 600i !default;
+$font-bold: 700 !default;
+$font-bold-italic: 700i !default;
+$font-extra-bold: 800 !default;
+$font-extra-bold-italic: 800i !default;
+$font-black: 900 !default;
+$font-black-italic: 900i !default;
+
+$font-weights: (
+  normal: $font-normal,
+  normal-italic: $font-normal-italic,
+  medium: $font-medium,
+  medium-italic: $font-medium-italic,
+  semibold: $font-semibold,
+  semibold-italic: $font-semibold-italic,
+  bold: $font-bold,
+  bold-italic: $font-bold-italic,
+  extra-bold: $font-extra-bold,
+  extra-bold-italic: $font-extra-bold-italic,
+  black: $font-black,
+  black-italic: $font-black-italic
+);
+
+// Spacing increments
+$spacing-increments: 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50 !default;
+
+// Display options
+$display-options: block, inline-block, none, flex, inline-flex !default;
+
+// List spacing
+$list-spacing: 8 16 24 !default;
+
+// Buttons sizes
+$button-sizes: (
+  sm: (
+    min-height: 16,
+    padding: 4 8,
+    font-size: 14
+  ),
+  md: (
+    min-height: 36,
+    padding: 4 16,
+    font-size: 14
+  ),
+  lg: (
+    min-height: 50,
+    padding: 12 32,
+    font-size: 20
+  )
+);
+
+// Inputs
+$input-height: 44;
+$text-area-height: 120 !default;
+$input-border: 1px solid $gray-400;
+
+$input-sizes: (
+  sm: 50,
+  md: 100,
+  lg: 200,
+  xl: 250,
+) !default;
+
+// Border radii
+$base-border-radius: 2 !default;
+
+// Header
+$header-height: 60 !default;
+
+$border-radii-sm: rem(2) !default;
+$border-radii-md: rem(4) !default;
+$border-radii-lg: rem(6) !default;
+$border-radii-round: 50% !default;
+
+// Breakpoints
+$breakpoint-small: 412px !default;
+$breakpoint-medium: 768px !default;
+$breakpoint-large: 1024px !default;
+
+$breakpoints: (
+  small: $breakpoint-small,
+  medium: $breakpoint-medium,
+  large: $breakpoint-large
+) !default;
+
+$site-width: 1224;

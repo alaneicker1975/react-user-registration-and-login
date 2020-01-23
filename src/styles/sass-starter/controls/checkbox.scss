@@ -1,0 +1,13 @@
+.checkbox {
+  @include appearance-reset();
+  @include form-option();
+  border-radius: rem($base-border-radius);
+
+  &:focus {
+    @include focus-outline();
+  }
+
+  &:checked {
+    background: $blue-200 no-repeat center center/rem(12) url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDUxMiA1MTIiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDUxMiA1MTI7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCgk8cG9seWdvbiBmaWxsPSIjZmZmZmZmIiBwb2ludHM9IjIwMi42MjQsNDc4LjAxNiAwLDI5MS4zNiA3MC41MTIsMjE0LjggMTkxLjk2OCwzMjYuNjU2IDQzMS40NCwzMy45ODQgNTEyLDk5LjkwNCAiLz4NCjwvc3ZnPg0K');
+  }
+}

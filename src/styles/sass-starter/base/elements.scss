@@ -1,0 +1,86 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: $base-font-family;
+  font-weight: $font-normal;
+  font-size: rem($root-font-size); 
+  line-height: $default-line-height;
+  overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+// Bold and Strong
+strong,
+b {
+  font-weight: $font-bold;
+}
+
+// Anchors
+a {
+	color: $blue-200;
+	text-decoration: underline;
+
+	&:hover {
+		color: $blue-300;
+	}
+}
+
+// Headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: $font-bitter;
+  font-weight: normal;
+
+  &.bordered {
+    border-bottom: rem(1) solid $light-gray;
+    padding-bottom: rem(4);
+    margin-bottom: rem(24);
+  }
+}
+
+// horizontal rule
+hr {
+  background: $light-gray;
+  height: rem(1);
+  border: 0;
+  width: 1005;
+}
+
+// Paragraphs
+p {
+  margin: rem(0 0 20);
+}
+
+* > p:last-child {
+  margin: 0;
+}
+
+// Placeholders
+::-webkit-input-placeholder {
+  color: $gray-300;
+}
+::-moz-placeholder {
+  color: $gray-300;
+}
+:-ms-input-placeholder {
+  color: $gray-300;
+}
+:-moz-placeholder {
+  color: $gray-300;
+}
+
+// Select dropdown
+select::-ms-expand {
+  display: none;
+}
