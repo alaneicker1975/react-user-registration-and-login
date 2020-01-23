@@ -5,7 +5,7 @@ import { AppContext } from '../App';
 
 const Register = (props) => {
   const { dispatch } = useContext(AppContext);
-  const [ errorMessage, setErrorMessage ] = useState(null);
+  const [ formError, setFormError ] = useState(null);
 
   const submitFormData = async (formData) => {
     try {
@@ -28,7 +28,7 @@ const Register = (props) => {
         message: `User "${formData.username}" has been created. You can now ${<Link to="/login">Log In</Link>}` 
       }});
     } catch (err) {
-      setErrorMessage(err.message);
+      setFormError(err.message);
     }
   }
 
@@ -37,7 +37,7 @@ const Register = (props) => {
       <h1>Register</h1>
       <UserForm
         onValidationSuccess={submitFormData}
-        errorMessage={errorMessage}
+        formError={formError}
       />
     </Fragment>
   );
