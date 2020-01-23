@@ -4,8 +4,8 @@ import * as yup from 'yup';
 import { useFormik } from 'formik';
 
 const validationSchema = yup.object().shape({
-  username: yup.string().required('Required'),
-  password: yup.string().required('Required'),
+  username: yup.string().required('Username is required'),
+  password: yup.string().required('Password is required'),
 });
 
 const UserForm = (props) => {
@@ -16,6 +16,7 @@ const UserForm = (props) => {
     handleChange,
     values,
     errors,
+    touched,
   } = useFormik({
     initialValues: {
       username: '',
@@ -39,6 +40,7 @@ const UserForm = (props) => {
           onChange={handleChange}
           values={values.username}
         />
+        {errors.username && touched.username ? <div>{errors.username}</div> : null}
       </div>
       <div>
         <label htmlFor="password">Password</label>
@@ -49,6 +51,7 @@ const UserForm = (props) => {
           onChange={handleChange}
           values={values.password}
         />
+        {errors.password && touched.password ? <div>{errors.password}</div> : null}
       </div>
       <button type="submit">Submit</button>
     </form>
