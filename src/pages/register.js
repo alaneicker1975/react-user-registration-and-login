@@ -28,8 +28,8 @@ const Register = (props) => {
       }});
       
       props.history.push('/login');
-    } catch (err) {
-      setFormError(err.message);
+    } catch (error) {
+      setFormError(error.message);
     }
   }
 

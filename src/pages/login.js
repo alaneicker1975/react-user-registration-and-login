@@ -25,8 +25,8 @@ const Login = (props) => {
       
       dispatch({ type: 'SET_USER', payload: { username } });
       props.history.push('/dashboard');
-    } catch (err) {
-      setFormError(err.message);
+    } catch (error) {
+      setFormError(error.message);
     }
   }
 

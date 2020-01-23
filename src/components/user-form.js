@@ -29,7 +29,7 @@ const UserForm = (props) => {
   });
 
   return (
-    <form onSubmit={handleSubmit} noValidate>
+    <form onSubmit={handleSubmit} noValidate autoComplete="off">
       {formError ? <div>{formError}</div> : null}
       <div>
         <label htmlFor="username">Username</label>
