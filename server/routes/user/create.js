@@ -9,6 +9,7 @@ router.post('/create', async (req, res) => {
     const { username, password } = req.body;
 
     const db = await dbPromise;
+    
     const { lastID } = await db.run(
       'INSERT INTO Users (username, password, isAdmin) VALUES (?,?,0)',
       [username, await passwordHash.hash(password, { saltRounds: 14 })]
