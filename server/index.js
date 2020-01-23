@@ -45,10 +45,10 @@ app.get('/:type(dashboard|login|register)', (req, res) => {
 //     .send({ foo: 'bar' });
 // });
 
-// app.get('/clear-token', (req, res) => {
-//   res.clearCookie('token');
-//   res.send({ foo: 'bar' });
-// });
+app.get('/clear-token', (req, res) => {
+  res.clearCookie('token');
+  res.send({ foo: 'bar' });
+});
 
 app.listen(PORT, () => {
   console.log('App listening on:', PORT);

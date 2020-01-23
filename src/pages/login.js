@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import UserForm from '../components/user-form';
 import { AppContext } from '../App';
 
-const Login = () => {
+const Login = (props) => {
   const { dispatch } = useContext(AppContext);
   const [ redirect, setRedirect ] = useState(false);
   const [ loginError, setLoginError ] = useState(null);
@@ -26,23 +26,21 @@ const Login = () => {
       }
       
       dispatch({ type: 'SET_USER_AS_LOGGED_IN' });
-      setRedirect(true);
+      props.history.push('/dashboard');
     } catch (err) {
       setLoginError(err.message);
     }
   }
 
-  return redirect
-    ? <Redirect to="/dashboard" />
-    : (
-      <Fragment>
-        <h1>Login</h1>
-        <UserForm 
-          onValidationSuccess={submitFormData} 
-          loginError={loginError}
-        />
-      </Fragment>
-    );
+  return (
+    <Fragment>
+      <h1>Login</h1>
+      <UserForm 
+        onValidationSuccess={submitFormData} 
+        loginError={loginError}
+      />
+    </Fragment>
+  );
 };
 
 export default Login;
