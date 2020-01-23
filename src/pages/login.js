@@ -18,8 +18,8 @@ const Login = (props) => {
       });
       
       const { isLoggedIn, username, error } = await response.json();
-
-      if (isLoggedIn === false || error) {
+  
+      if (!isLoggedIn || error) {
         throw new Error(error || 'Username or password is invalid!');
       }
       
