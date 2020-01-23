@@ -1,7 +1,9 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useContext } from 'react';
 import UserForm from '../components/user-form';
+import { AppContext } from '../App';
 
 const Login = (props) => {
+  const { dispatch } = useContext(AppContext);
   const [ loginError, setLoginError ] = useState(null);
   
   const submitFormData = async (formData) => {
@@ -15,12 +17,13 @@ const Login = (props) => {
         body: JSON.stringify({ formData }),
       });
       
-      const { isLoggedIn, error } = await response.json();
+      const { isLoggedIn, username, error } = await response.json();
 
       if (isLoggedIn === false || error) {
         throw new Error(error || 'Username or password is invalid!');
       }
       
+      dispatch({ type: 'SET_USER', payload: { username } });
       props.history.push('/dashboard');
     } catch (err) {
       setLoginError(err.message);

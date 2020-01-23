@@ -32,7 +32,7 @@ router.post('/authenticate', async (req, res) => {
     res
       .cookie('token', token, { httpOnly: true })
       .status(200)
-      .send({ isLoggedIn: true });
+      .send({ isLoggedIn: true, username });
   } catch (error) {
     res
       .status(500)

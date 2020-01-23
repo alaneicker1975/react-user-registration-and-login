@@ -2,17 +2,19 @@ import React, { Fragment, useContext, useEffect } from 'react';
 import { AppContext } from '../App';
 
 const Dashboard = (props) => {
-  const { dispatch } = useContext(AppContext);
+  const { state, dispatch } = useContext(AppContext);
   
   useEffect(() => {
     const verifyUser = async () => {     
       try {
         const userVerification = await fetch('http://localhost:6060/api/v1/user/verify');
-        const { isValid, error } = await userVerification.json();
+        const { isValid, username, error } = await userVerification.json();
     
         if (error || !isValid) {
           dispatch({ type: 'SET_ERROR', payload: { error: 'Invalid token' }});
           props.history.push('/');
+        } else {
+          dispatch({ type: 'SET_USER', payload: { username } });
         }
       } catch (error) {
         dispatch({ type: 'SET_ERROR', payload: { error: error.message }});
@@ -25,7 +27,7 @@ const Dashboard = (props) => {
 
   return (
     <Fragment>
-      <h1>Dashboard</h1>
+      <h1>Welcome {state.username}</h1>
     </Fragment>
   );
 };
