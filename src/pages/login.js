@@ -4,7 +4,7 @@ import { AppContext } from '../App';
 
 const Login = (props) => {
   const { dispatch } = useContext(AppContext);
-  const [ loginError, setLoginError ] = useState(null);
+  const [ errorMessage, setErrorMessage ] = useState(null);
   
   const submitFormData = async (formData) => {
     try {
@@ -26,7 +26,7 @@ const Login = (props) => {
       dispatch({ type: 'SET_USER', payload: { username } });
       props.history.push('/dashboard');
     } catch (err) {
-      setLoginError(err.message);
+      setErrorMessage(err.message);
     }
   }
 
@@ -35,7 +35,7 @@ const Login = (props) => {
       <h1>Login</h1>
       <UserForm 
         onValidationSuccess={submitFormData} 
-        loginError={loginError}
+        errorMessage={errorMessage}
       />
     </Fragment>
   );

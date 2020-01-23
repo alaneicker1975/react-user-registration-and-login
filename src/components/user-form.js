@@ -9,7 +9,7 @@ const validationSchema = yup.object().shape({
 });
 
 const UserForm = (props) => {
-  const { onValidationSuccess, loginError } = props;
+  const { onValidationSuccess, errorMessage } = props;
 
   const {
     handleSubmit,
@@ -29,9 +29,9 @@ const UserForm = (props) => {
 
   return (
     <form onSubmit={handleSubmit} noValidate>
-      {loginError ? <div>{loginError}</div> : null}
+      {errorMessage ? <div>{errorMessage}</div> : null}
       <div>
-        <label htmlFor="username">Password</label>
+        <label htmlFor="username">Username</label>
         <input
           id="username"
           name="username"
@@ -57,12 +57,12 @@ const UserForm = (props) => {
 
 UserForm.propTypes = {
   onValidationSuccess: PropTypes.func,
-  loginError: PropTypes.string,
+  errorMessage: PropTypes.string,
 };
 
 UserForm.defaultProps = {
   onValidationSuccess: () => {},
-  loginError: '',
+  errorMessage: '',
 };
 
 export default UserForm;
