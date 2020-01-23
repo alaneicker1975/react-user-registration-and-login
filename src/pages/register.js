@@ -1,5 +1,4 @@
 import React, { Fragment, useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
 import UserForm from '../components/user-form';
 import { AppContext } from '../App';
 
@@ -15,18 +14,20 @@ const Register = (props) => {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ formData }),
+        body: JSON.stringify(formData),
       });
       
-      const { userCreated } = await response.json();
-  
-      if (!userCreated || error) {
+      const { lastID, error } = await response.json();
+      
+      if (!lastID || error) {
         throw new Error(error || 'Could not create user!');
       }
-      
+   
       dispatch({ type: 'SET_GLOBAL_MESSAGE', payload: { 
-        message: `User "${formData.username}" has been created. You can now ${<Link to="/login">Log In</Link>}` 
+        message: `User "${formData.username}" has been created. You can now log in` 
       }});
+      
+      props.history.push('/login');
     } catch (err) {
       setFormError(err.message);
     }

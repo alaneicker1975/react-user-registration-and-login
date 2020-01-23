@@ -14,7 +14,7 @@ const Login = (props) => {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ formData }),
+        body: JSON.stringify(formData),
       });
       
       const { isLoggedIn, username, error } = await response.json();

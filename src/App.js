@@ -1,4 +1,4 @@
-import React, { createContext, useReducer } from "react";
+import React, { createContext, useReducer, useEffect } from "react";
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Login from './pages/login';
@@ -14,6 +14,14 @@ export const AppContext = createContext({});
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
+  useEffect(() => {
+    if (state.message !== null) {
+      setTimeout(() => {
+        dispatch({ type: 'SET_GLOBAL_MESSAGE', payload: { message: null } });
+      }, 5000);
+    }
+  });
+  
   return (
     <AppContext.Provider value={{ state, dispatch }}>
       {state.message ? <Alert type="error" text={state.message} /> : null}

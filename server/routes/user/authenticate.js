@@ -10,7 +10,8 @@ const invalidAuthError = 'Username or password is invalid';
 
 router.post('/authenticate', async (req, res) => {
   try {
-    const { formData: { username, password } } = req.body;
+    console.log(req.body);
+    const { username, password } = req.body;
 
     const db = await dbPromise;
     const data = await db.get('SELECT password FROM Users WHERE username = ?', username);
@@ -34,9 +35,7 @@ router.post('/authenticate', async (req, res) => {
       .status(200)
       .send({ isLoggedIn: true, username });
   } catch (error) {
-    res
-      .status(500)
-      .send({ error: error.message });
+    res.status(500).send({ error: error.message });
   }
 });
 
