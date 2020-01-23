@@ -27,7 +27,7 @@ app.use(`${baseUrl}/user`, verifyUserRoute);
 // Catchs all errors thrown and sends them
 // as part of the response object
 app.use((error, req, res, next) => {
-  res.status(500).json({ error: error.message });
+  res.status(500).send({ error: error.message });
 });
 
 // Allows React routes to render is page is refreshed.
