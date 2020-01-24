@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import classNames from 'classnames';
-import UserForm from '../components/user-form';
-import { AppContext } from '../App';
+import UserForm from '../../components/user-form';
+import { AppContext } from '../../App';
 
 const Login = (props) => {
   const { dispatch } = useContext(AppContext);
@@ -40,8 +40,8 @@ const Login = (props) => {
     <div className={classNames({
       'is-loading': loading
     })}>
-      <h1>Login</h1>
       <UserForm 
+        title="Login"
         onValidationSuccess={submitFormData} 
         formError={formError}
       />

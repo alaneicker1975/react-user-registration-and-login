@@ -1,5 +1,5 @@
 import React, { Fragment, useContext, useEffect } from 'react';
-import { AppContext } from '../App';
+import { AppContext } from '../../App';
 
 const Dashboard = (props) => {
   const { state, dispatch } = useContext(AppContext);

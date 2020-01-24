@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useContext } from 'react';
-import UserForm from '../components/user-form';
-import { AppContext } from '../App';
+import UserForm from '../../components/user-form';
+import { AppContext } from '../../App';
 
 const Register = (props) => {
   const { dispatch } = useContext(AppContext);
@@ -35,8 +35,8 @@ const Register = (props) => {
 
   return (
     <Fragment>
-      <h1>Register</h1>
       <UserForm
+        title="Register"
         onValidationSuccess={submitFormData}
         formError={formError}
       />

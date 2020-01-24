@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 import * as yup from 'yup';
 import { useFormik } from 'formik';
 
+import './user-form.scss';
+
 const validationSchema = yup.object().shape({
   username: yup.string().required('Username is required'),
   password: yup.string().required('Password is required'),
 });
 
 const UserForm = (props) => {
-  const { onValidationSuccess, formError } = props;
+  const { onValidationSuccess, formError, title } = props;
 
   const {
     handleSubmit,
@@ -29,41 +31,52 @@ const UserForm = (props) => {
   });
 
   return (
-    <form onSubmit={handleSubmit} noValidate autoComplete="off">
+    <form className="user-form" onSubmit={handleSubmit} noValidate autoComplete="off">
+      {title ? <h1 className="margin-bottom-16 text-weight-bold text-size-24 text-align-center">{title}</h1> : null}
       {formError ? <div>{formError}</div> : null}
-      <div>
-        <label htmlFor="username">Username</label>
+      <div className="field">
+        <label className="field__label field__label--center" htmlFor="username">Username</label>
         <input
           id="username"
+          className="field__input"
           name="username"
           type="text"
           onChange={handleChange}
           values={values.username}
         />
-        {errors.username && touched.username ? <div>{errors.username}</div> : null}
+        {errors.username && touched.username 
+          ? <div className="field__error field__error--center">{errors.username}</div> 
+          : null}
       </div>
-      <div>
-        <label htmlFor="password">Password</label>
+      <div className="margin-top-8"></div>
+      <div className="field">
+        <label className="field__label field__label--center" htmlFor="password">Password</label>
         <input
           id="password"
+          className="field__input"
           name="password"
           type="password"
           onChange={handleChange}
           values={values.password}
         />
-        {errors.password && touched.password ? <div>{errors.password}</div> : null}
+        {errors.password && touched.password 
+          ? <div className="field__error field__error--center">{errors.password}</div> 
+          : null}
       </div>
-      <button type="submit">Submit</button>
+      <div className="margin-top-16"></div>
+      <button className="btn btn--primary btn--block" type="submit">Submit</button>
     </form>
   );
 }
 
 UserForm.propTypes = {
+  title: PropTypes.string,
   onValidationSuccess: PropTypes.func,
   formError: PropTypes.string,
 };
 
 UserForm.defaultProps = {
+  title: '',
   onValidationSuccess: () => {},
   formError: '',
 };

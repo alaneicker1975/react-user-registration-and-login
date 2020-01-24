@@ -1,0 +1,38 @@
+.field {
+
+  &__label {
+    font-size: rem(14);
+    font-weight: $font-bold;
+    display: block;
+
+    &--center {
+      text-align: center;
+    }
+  }
+
+  &__input {
+    background: $gray-100;
+    border: 0;
+    font-family: inherit;
+    font-size: inherit;
+    height: rem($input-height);
+    margin: rem(3 0);
+    padding: rem(8);
+    width: 100%;
+    
+    &:focus {
+      outline: 0;
+      box-shadow: 0 0 0 rem(3) $blue-100;
+    }
+  }
+
+  &__error {
+    color: $red-100;
+    font-size: rem(12);
+    font-weight: $font-semibold;
+
+    &--center {
+      text-align: center;
+    }
+  }
+}
