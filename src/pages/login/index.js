@@ -1,16 +1,15 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, Fragment } from 'react';
 import classNames from 'classnames';
 import UserForm from '../../components/user-form';
 import { AppContext } from '../../App';
 
-const Login = (props) => {
+const Login = props => {
   const { dispatch } = useContext(AppContext);
   const [ formError, setFormError ] = useState(null);
-  const [ loading, setLoading ] = useState(false);
   
   const submitFormData = async (formData) => {
     try {
-      setLoading(true);
+      dispatch({ type: 'SHOW_OVERLAY', payload: { showOverlay: true } });
 
       const response = await fetch('http://localhost:6060/api/v1/user/authenticate', {
         method: 'POST',
@@ -27,25 +26,23 @@ const Login = (props) => {
         throw new Error(error);
       }
       
-      setLoading(false);
+      dispatch({ type: 'SHOW_OVERLAY', payload: { showOverlay: false } });
       dispatch({ type: 'SET_USER', payload: { username } });
       props.history.push('/dashboard');
     } catch (error) {
+      dispatch({ type: 'SHOW_OVERLAY', payload: { showOverlay: false } });
       setFormError(error.message);
-      setLoading(false);
     }
   }
 
   return (
-    <div className={classNames({
-      'is-loading': loading
-    })}>
+    <Fragment>
       <UserForm 
         title="Login"
         onValidationSuccess={submitFormData} 
         formError={formError}
       />
-    </div>
+    </Fragment>
   );
 };
 

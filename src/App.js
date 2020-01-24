@@ -6,6 +6,7 @@ import Dashboard from './pages/dashboard';
 import Register from './pages/register';
 
 import Alert from './components/alert';
+import Overlay from './components/overlay';
 
 import { reducer, initialState } from './reducers';
 
@@ -15,7 +16,7 @@ export const AppContext = createContext({});
 
 const App = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
-
+  
   useEffect(() => {
     if (state.message !== null) {
       setTimeout(() => {
@@ -26,9 +27,8 @@ const App = () => {
   
   return (
     <AppContext.Provider value={{ state, dispatch }}>
-      {state.message 
-        ? <Alert align="center" {...state.message} /> 
-        : null}
+      {state.showOverlay ? <Overlay /> : null}
+      {state.message ? <Alert align="center" {...state.message} /> : null}
       <Router>
         <Route path="/" component={Login} exact />
         <Route path="/login" component={Login} />

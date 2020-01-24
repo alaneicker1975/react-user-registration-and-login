@@ -1,7 +1,9 @@
 import React, { Fragment, useContext, useEffect } from 'react';
 import { AppContext } from '../../App';
 
-const Dashboard = (props) => {
+import './dashboard.scss';
+
+const Dashboard = props => {
   const { state, dispatch } = useContext(AppContext);
   
   useEffect(() => {
@@ -56,8 +58,25 @@ const Dashboard = (props) => {
 
   return (
     <Fragment>
-      <h1>Welcome {state.username}</h1>
-      <button type="button" onClick={logout}>Log Out</button>
+      <header className="dashboard-header">
+        <div className="dashboard-header__logo">Dashboard</div>
+        <ul className="dashboard-header__nav">
+          <li>
+            <span className="text-uppercase">{state.username}</span>
+          </li>
+          <li>
+            <button 
+              className="btn btn--tertiary btn--sm" 
+              type="button" 
+              onClick={logout}>
+              Log Out
+            </button>
+          </li>
+        </ul>
+      </header>
+      <h1 className="text-size-30 text-weight-semibold text-align-center margin-top-30 text-uppercase">
+        Welcome
+      </h1>
     </Fragment>
   );
 };

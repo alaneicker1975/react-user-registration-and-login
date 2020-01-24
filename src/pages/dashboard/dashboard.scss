@@ -1,0 +1,22 @@
+@import '../../styles/tools';
+
+.dashboard-header {
+  background: $black;
+  color: $white;
+  display: flex;
+  justify-content: space-between;
+  padding: rem(16);
+
+  &__logo {
+    font-size: rem(20);
+    text-transform: uppercase;
+  }
+
+  &__nav > * {
+    display: inline-block;
+  }
+
+  &__nav > * + * {
+    margin-left: rem(16);
+  }
+}

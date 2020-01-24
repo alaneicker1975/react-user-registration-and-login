@@ -2,7 +2,7 @@ import React from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
-const Alert = (props) => {
+const Alert = props => {
   const { type, text, align } = props;
   
   return (
