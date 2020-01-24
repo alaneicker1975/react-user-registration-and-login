@@ -6,8 +6,6 @@ import dbPromise from '../../db-connection';
 
 const router = Router();
 
-const invalidAuthError = 'Username or password is invalid';
-
 router.post('/authenticate', async (req, res) => {
   try {
     const { username, password } = req.body;
