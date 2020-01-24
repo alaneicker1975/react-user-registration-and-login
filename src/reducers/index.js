@@ -15,11 +15,7 @@ export const reducer = (state, action) => {
     case 'SHOW_OVERLAY':
       return { ...state, showOverlay: payload };
     case 'SET_GLOBAL_MESSAGE':
-      if (payload === null) {
-        return { ...state, message: null };
-      } else {
-        return { ...state, message: payload };
-      }
+      return { ...state, message: payload };
     case 'SET_USER':
       return { ...state, user: payload };
     case 'SET_USERS':
