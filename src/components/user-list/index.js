@@ -1,4 +1,5 @@
 import React, { useEffect, useContext } from 'react';
+import classNames from 'classnames';
 import { AppContext } from '../../App';
 
 import './user-list.scss';
@@ -19,12 +20,23 @@ const UserList = () => {
   
   return (
     <ul className="user-list">
-      {state.users.map(user => (
-        <li className="flex flex--equalColumns" key={Math.random()}>
-          <div><b>username:</b> {user.username}</div>
-      <div><b>isAdmin:</b> {Boolean(user.isAdmin).toString()}</div>
-        </li>
-      ))}
+      {state.users.map(user => {
+        const { username, isAdmin } = user;
+        return (
+          <li className="flex flex--equalColumns" key={Math.random()}>
+            <div><b>username:</b> {username}</div>
+            <div className="text-align-center"><b>isAdmin:</b> {Boolean(isAdmin).toString()}</div>
+            <div className="text-align-right">
+              <button style={{ width: '80px' }} type="button" className={classNames('btn btn--sm', {
+                'btn--secondary': isAdmin,
+                'btn--tertiary': !isAdmin
+              })}>
+                {isAdmin ? '- Admin' : '+ Admin'}
+              </button>
+            </div>
+          </li>
+        );
+      })}
     </ul>
   );
 };
