@@ -4,8 +4,16 @@
   font-weight: $font-bold;
   padding: rem(8 16);
 
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
   @each $name, $color in $alert-colors {
-    &--#{name} {
+    &--#{$name} {
       background-color: $color;
       color: $white;
     }

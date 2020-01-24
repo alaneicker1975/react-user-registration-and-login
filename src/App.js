@@ -18,15 +18,15 @@ const App = () => {
 
   useEffect(() => {
     if (state.message !== null) {
-      setTimeout(() => {
-        dispatch({ type: 'SET_GLOBAL_MESSAGE', payload: { message: null } });
-      }, 5000);
+      // setTimeout(() => {
+      //   dispatch({ type: 'SET_GLOBAL_MESSAGE', payload: { message: null } });
+      // }, 5000);
     }
   });
   
   return (
     <AppContext.Provider value={{ state, dispatch }}>
-      {state.message ? <Alert type="error" text={state.message} /> : null}
+      {state.message ? <Alert align="center" type="error" text={state.message} /> : null}
       <Router>
         <Route path="/" component={Login} exact />
         <Route path="/login" component={Login} />
