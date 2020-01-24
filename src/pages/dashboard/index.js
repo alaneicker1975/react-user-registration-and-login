@@ -46,7 +46,7 @@ const Dashboard = props => {
           </li>
           <li>
             <button 
-              className="btn btn--tertiary btn--sm" 
+              className="btn btn--primary btn--sm" 
               type="button" 
               onClick={logout}>
               Log Out
