@@ -18,9 +18,9 @@ const App = () => {
 
   useEffect(() => {
     if (state.message !== null) {
-      // setTimeout(() => {
-      //   dispatch({ type: 'SET_GLOBAL_MESSAGE', payload: { message: null } });
-      // }, 5000);
+      setTimeout(() => {
+        dispatch({ type: 'SET_GLOBAL_MESSAGE', payload: { message: null } });
+      }, 5000);
     }
   });
   
