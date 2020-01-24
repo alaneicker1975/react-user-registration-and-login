@@ -17,7 +17,11 @@ router.post('/create', async (req, res) => {
 
     res.status(200).send({ lastID });
   } catch (error) {
-    res.status(500).send({ error: error.message });
+    res.status(500).send({ 
+      error: error.code === 'SQLITE_CONSTRAINT' 
+        ? 'Username already exists' 
+        : error.message
+    });
   }
 });
   1
