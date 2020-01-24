@@ -43,7 +43,7 @@ const Register = props => {
   return (
     <Fragment>
       <UserForm
-        title="Register"
+        title="Register User"
         onValidationSuccess={submitFormData}
         formError={formError}
       />
