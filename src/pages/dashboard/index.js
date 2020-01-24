@@ -56,7 +56,7 @@ const Dashboard = props => {
       </header>
       {isAdmin
         ? <Fragment>
-            <h1 className="text-size-30 text-weight-semibold text-align-center margin-top-30 text-uppercase">
+            <h1 className="text-size-24 text-weight-semibold text-align-center margin-top-30 text-uppercase">
               Registered Users
             </h1>
             <div className="flex flex--justify-center margin-top-32">

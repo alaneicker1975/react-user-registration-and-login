@@ -25,15 +25,7 @@ const UserList = () => {
         return (
           <li className="flex flex--equalColumns" key={Math.random()}>
             <div><b>username:</b> {username}</div>
-            <div className="text-align-center"><b>isAdmin:</b> {Boolean(isAdmin).toString()}</div>
-            <div className="text-align-right">
-              <button style={{ width: '80px' }} type="button" className={classNames('btn btn--sm', {
-                'btn--secondary': isAdmin,
-                'btn--tertiary': !isAdmin
-              })}>
-                {isAdmin ? '- Admin' : '+ Admin'}
-              </button>
-            </div>
+            <div><b>isAdmin:</b> {Boolean(isAdmin).toString()}</div>
           </li>
         );
       })}
