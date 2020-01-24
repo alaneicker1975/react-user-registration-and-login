@@ -33,7 +33,7 @@ const UserForm = props => {
   return (
     <form className="user-form" onSubmit={handleSubmit} noValidate autoComplete="off">
       {title ? <h1 className="margin-bottom-16 text-weight-bold text-size-24 text-align-center">{title}</h1> : null}
-      {formError ? <div className="text-color-red margin-bottom-16">{formError}</div> : null}
+      {formError ? <div className="text-color-red margin-bottom-16 text-align-center">{formError}</div> : null}
       <div className="field">
         <label className="field__label field__label--center" htmlFor="username">Username</label>
         <input

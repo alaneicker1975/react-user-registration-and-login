@@ -10,7 +10,7 @@ router.get('/verify', (req, res) => {
   jwt.verify(token, jwtSignature, (error, decoded) => {
     res.send({ 
       isValid: error || decoded === undefined ? false : true, 
-      username: decoded.username,
+      user: { username: decoded.username, isAdmin: decoded.isAdmin },
     });
   });
 });

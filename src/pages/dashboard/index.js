@@ -6,21 +6,23 @@ import './dashboard.scss';
 
 const Dashboard = props => {
   const { state, dispatch } = useContext(AppContext);
+  const { user: { username, isAdmin } } = state;
   
   useEffect(() => {
     const verifyUser = async () => {     
       try {
         const userVerification = await fetch('http://localhost:6060/api/v1/users/verify');
-        const { error, isValid, username } = await userVerification.json();
+        const { error, isValid, user } = await userVerification.json();
     
         if (error || !isValid) {
           dispatch({ 
             type: 'SET_GLOBAL_MESSAGE', 
             payload: { text: 'You\'ve been logged out', type: 'error' },
           });
+
           props.history.push('/login');
         } else {
-          dispatch({ type: 'SET_USER', payload: { username } });
+          dispatch({ type: 'SET_USER', payload: user });
         }
       } catch (error) {
         dispatch({ 
@@ -63,7 +65,7 @@ const Dashboard = props => {
         <div className="dashboard-header__logo">Dashboard</div>
         <ul className="dashboard-header__nav">
           <li>
-            <span className="text-uppercase text-size-12">{state.username}</span>
+            <span className="text-uppercase text-size-12">{username}</span>
           </li>
           <li>
             <button 
@@ -75,12 +77,16 @@ const Dashboard = props => {
           </li>
         </ul>
       </header>
-      <h1 className="text-size-30 text-weight-semibold text-align-center margin-top-30 text-uppercase">
-        Registered Users
-      </h1>
-      <div className="flex flex--justify-center margin-top-32">
-        <UserList />
-      </div>
+      {isAdmin
+        ? <Fragment>
+            <h1 className="text-size-30 text-weight-semibold text-align-center margin-top-30 text-uppercase">
+              Registered Users
+            </h1>
+            <div className="flex flex--justify-center margin-top-32">
+              <UserList />
+            </div>
+          </Fragment>
+        : null}
     </Fragment>
   );
 };

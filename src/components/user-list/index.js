@@ -11,7 +11,7 @@ const UserList = () => {
       const response = await fetch('http://localhost:6060/api/v1/users');
       const users = await response.json();
       
-      dispatch({ type: 'SET_USERS', payload: { users } });
+      dispatch({ type: 'SET_USERS', payload: users });
     };
 
     getUsers();

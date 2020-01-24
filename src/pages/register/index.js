@@ -9,7 +9,7 @@ const Register = props => {
 
   const submitFormData = async (formData) => {
     try {
-      dispatch({ type: 'SHOW_OVERLAY', payload: { showOverlay: true } });
+      dispatch({ type: 'SHOW_OVERLAY', payload: true });
 
       const response = await fetch('http://localhost:6060/api/v1/users/create', {
         method: 'POST',
@@ -26,7 +26,7 @@ const Register = props => {
         throw new Error('Could not create user');
       }
       
-      dispatch({ type: 'SHOW_OVERLAY', payload: { showOverlay: false } });
+      dispatch({ type: 'SHOW_OVERLAY', payload: false });
 
       dispatch({ 
         type: 'SET_GLOBAL_MESSAGE', 
@@ -35,7 +35,7 @@ const Register = props => {
       
       props.history.push('/login');
     } catch (error) {
-      dispatch({ type: 'SHOW_OVERLAY', payload: { showOverlay: false } });
+      dispatch({ type: 'SHOW_OVERLAY', payload: false });
       setFormError(error.message);
     }
   }

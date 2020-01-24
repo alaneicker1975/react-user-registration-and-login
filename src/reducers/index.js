@@ -1,5 +1,8 @@
 export const initialState = { 
-  username: null,
+  user: {
+    username: null,
+    isAdmin: null,
+  },
   message: null,
   showOverlay: false,
   users: [],
@@ -10,17 +13,17 @@ export const reducer = (state, action) => {
 
   switch (action.type) {
     case 'SHOW_OVERLAY':
-      return { ...state, showOverlay: payload.showOverlay };
-    case 'SET_USER':
-      return { ...state, username: payload.username };
+      return { ...state, showOverlay: payload };
     case 'SET_GLOBAL_MESSAGE':
       if (payload === null) {
         return { ...state, message: null };
       } else {
-        return { ...state, message: { text: payload.text, type: payload.type } };
+        return { ...state, message: payload };
       }
+    case 'SET_USER':
+      return { ...state, user: payload };
     case 'SET_USERS':
-      return { ...state, users: payload.users };
+      return { ...state, users: payload };
     default:
       return state;
   }

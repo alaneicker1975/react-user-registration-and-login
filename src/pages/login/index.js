@@ -9,7 +9,7 @@ const Login = props => {
   
   const submitFormData = async (formData) => {
     try {
-      dispatch({ type: 'SHOW_OVERLAY', payload: { showOverlay: true } });
+      dispatch({ type: 'SHOW_OVERLAY', payload: true });
 
       const response = await fetch('http://localhost:6060/api/v1/users/authenticate', {
         method: 'POST',
@@ -20,17 +20,18 @@ const Login = props => {
         body: JSON.stringify(formData),
       });
       
-      const { isLoggedIn, username, error } = await response.json();
+      const { isLoggedIn, username, isAdmin, error } = await response.json();
         
       if (!isLoggedIn || error) {
         throw new Error(error);
       }
       
-      dispatch({ type: 'SHOW_OVERLAY', payload: { showOverlay: false } });
-      dispatch({ type: 'SET_USER', payload: { username } });
+      dispatch({ type: 'SHOW_OVERLAY', payload: false });
+      dispatch({ type: 'SET_USER', payload: { username, isAdmin } });
+      
       props.history.push('/dashboard');
     } catch (error) {
-      dispatch({ type: 'SHOW_OVERLAY', payload: { showOverlay: false } });
+      dispatch({ type: 'SHOW_OVERLAY', payload: false });
       setFormError(error.message);
     }
   }

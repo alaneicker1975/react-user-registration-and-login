@@ -13,22 +13,23 @@ router.post('/authenticate', async (req, res) => {
     const { username, password } = req.body;
 
     const db = await dbPromise;
-    const data = await db.get('SELECT password FROM Users WHERE username = ?', username);
+    const data = await db.get('SELECT password, isAdmin FROM Users WHERE username = ?', username);
     
     if (!data) {
       throw new Error(authenticationError);
     }
-
+    
     const isLoggedIn = await passwordHash.compare(password, data.password);
+    const isAdmin = data.isAdmin;
 
-    const token = jwt.sign({ username }, jwtSignature, {
+    const token = jwt.sign({ username, isAdmin }, jwtSignature, {
       expiresIn: 1800,
     });
 
     res
       .cookie('token', token, { httpOnly: true })
       .status(200)
-      .send({ isLoggedIn, username });
+      .send({ isLoggedIn, username, isAdmin });
   } catch (error) {
     res.status(500).send({ error: error.message });
   }
