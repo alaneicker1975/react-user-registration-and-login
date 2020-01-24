@@ -6,7 +6,7 @@ export const verifyUser = async (props, dispatch) => {
     if (error || !isValid) {
       dispatch({ 
         type: 'SET_GLOBAL_MESSAGE', 
-        payload: { text: 'You\'ve been logged out', type: 'error' },
+        payload: { text: 'You must log in', type: 'error' },
       });
 
       props.history.push('/login');
