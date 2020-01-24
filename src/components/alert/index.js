@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Alert = (props) => {
   const { type, text, align } = props;
-
+  
   return (
     <div className={classNames(`alert alert--${type}`, {
       [`alert--${align}`]: align

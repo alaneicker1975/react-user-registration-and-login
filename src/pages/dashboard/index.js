@@ -11,13 +11,19 @@ const Dashboard = (props) => {
         const { error, isValid, username } = await userVerification.json();
     
         if (error || !isValid) {
-          dispatch({ type: 'SET_GLOBAL_MESSAGE', payload: { message: 'You\'ve been logged out' }});
+          dispatch({ 
+            type: 'SET_GLOBAL_MESSAGE', 
+            payload: { text: 'You\'ve been logged out', type: 'error' },
+          });
           props.history.push('/login');
         } else {
           dispatch({ type: 'SET_USER', payload: { username } });
         }
       } catch (error) {
-        dispatch({ type: 'SET_GLOBAL_MESSAGE', payload: { message: error.message }});
+        dispatch({ 
+          type: 'SET_GLOBAL_MESSAGE', 
+          payload: { text: error.message, type: 'error' },
+        });
         props.history.push('/login');
       }
     };
@@ -34,10 +40,17 @@ const Dashboard = (props) => {
         throw new Error(error || 'Error logging out');
       }
 
-      dispatch({ type: 'SET_GLOBAL_MESSAGE', payload: { message: 'You\'ve been logged out' }});
+      dispatch({ 
+        type: 'SET_GLOBAL_MESSAGE', 
+        payload: { text: 'You\'ve been logged out', type: 'info' }
+      });
+      
       props.history.push('/login');
     } catch (error) {
-      dispatch({ type: 'SET_GLOBAL_MESSAGE', payload: { message: error.message }});
+      dispatch({ 
+        type: 'SET_GLOBAL_MESSAGE', 
+        payload: { text: error.message, type: 'error' }
+      });
     }
   }
 

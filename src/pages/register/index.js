@@ -23,9 +23,10 @@ const Register = (props) => {
         throw new Error('Could not create user');
       }
    
-      dispatch({ type: 'SET_GLOBAL_MESSAGE', payload: { 
-        message: `User "${formData.username}" has been created. You can now log in` 
-      }});
+      dispatch({ 
+        type: 'SET_GLOBAL_MESSAGE', 
+        payload: { text: `User "${formData.username}" has been created. You can now log in`, type: 'confirmation' },
+      });
       
       props.history.push('/login');
     } catch (error) {

@@ -10,7 +10,11 @@ export const reducer = (state, action) => {
     case 'SET_USER':
       return { ...state, username: payload.username };
     case 'SET_GLOBAL_MESSAGE':
-      return { ...state, message: payload.message };
+      if (payload === null) {
+        return { ...state, message: null };
+      } else {
+        return { ...state, message: { text: payload.text, type: payload.type } };
+      }
     default:
       return state;
   }
