@@ -1,4 +1,5 @@
 import React, { Fragment, useContext, useEffect } from 'react';
+import { verifyUser } from '../../actions/verify-user';
 import UserList from '../../components/user-list';
 import { AppContext } from '../../App';
 
@@ -9,31 +10,7 @@ const Dashboard = props => {
   const { user: { username, isAdmin } } = state;
   
   useEffect(() => {
-    const verifyUser = async () => {     
-      try {
-        const userVerification = await fetch('http://localhost:6060/api/v1/users/verify');
-        const { error, isValid, user } = await userVerification.json();
-    
-        if (error || !isValid) {
-          dispatch({ 
-            type: 'SET_GLOBAL_MESSAGE', 
-            payload: { text: 'You\'ve been logged out', type: 'error' },
-          });
-
-          props.history.push('/login');
-        } else {
-          dispatch({ type: 'SET_USER', payload: user });
-        }
-      } catch (error) {
-        dispatch({ 
-          type: 'SET_GLOBAL_MESSAGE', 
-          payload: { text: error.message, type: 'error' },
-        });
-        props.history.push('/login');
-      }
-    };
-
-    verifyUser();
+    verifyUser(props, dispatch);
   }, []);
 
   const logout = async () => {
