@@ -10,6 +10,8 @@ const Login = (props) => {
   
   const submitFormData = async (formData) => {
     try {
+      setLoading(true);
+
       const response = await fetch('http://localhost:6060/api/v1/user/authenticate', {
         method: 'POST',
         headers: {
@@ -25,10 +27,12 @@ const Login = (props) => {
         throw new Error(error);
       }
       
+      setLoading(false);
       dispatch({ type: 'SET_USER', payload: { username } });
       props.history.push('/dashboard');
     } catch (error) {
       setFormError(error.message);
+      setLoading(false);
     }
   }
 
