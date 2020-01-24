@@ -2,6 +2,7 @@ export const initialState = {
   username: null,
   message: null,
   showOverlay: false,
+  users: [],
 };
 
 export const reducer = (state, action) => {
@@ -18,6 +19,8 @@ export const reducer = (state, action) => {
       } else {
         return { ...state, message: { text: payload.text, type: payload.type } };
       }
+    case 'SET_USERS':
+      return { ...state, users: payload.users };
     default:
       return state;
   }

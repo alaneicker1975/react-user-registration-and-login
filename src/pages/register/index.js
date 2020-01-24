@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import UserForm from '../../components/user-form';
 import { AppContext } from '../../App';
 
@@ -10,7 +11,7 @@ const Register = props => {
     try {
       dispatch({ type: 'SHOW_OVERLAY', payload: { showOverlay: true } });
 
-      const response = await fetch('http://localhost:6060/api/v1/user/create', {
+      const response = await fetch('http://localhost:6060/api/v1/users/create', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -46,6 +47,9 @@ const Register = props => {
         onValidationSuccess={submitFormData}
         formError={formError}
       />
+      <p className="text-align-center text-size-14"
+        >Already have an account? <Link to="/login">Log In</Link>
+      </p>
     </Fragment>
   );
 };
