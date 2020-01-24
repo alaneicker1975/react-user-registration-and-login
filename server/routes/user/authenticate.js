@@ -6,6 +6,8 @@ import dbPromise from '../../db-connection';
 
 const router = Router();
 
+const authenticationError = 'Username or password is invalid';
+
 router.post('/authenticate', async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -14,23 +16,19 @@ router.post('/authenticate', async (req, res) => {
     const data = await db.get('SELECT password FROM Users WHERE username = ?', username);
     
     if (!data) {
-      throw new Error();
+      throw new Error(authenticationError);
     }
 
-    const isValid = await passwordHash.compare(password, data.password);
-    
-    if (!isValid) {
-      throw new Error();
-    }
+    const isLoggedIn = await passwordHash.compare(password, data.password);
 
     const token = jwt.sign({ username }, jwtSignature, {
-      expiresIn: 1800, // expires in 30 minutes
+      expiresIn: 1800,
     });
 
     res
       .cookie('token', token, { httpOnly: true })
       .status(200)
-      .send({ isLoggedIn: true, username });
+      .send({ isLoggedIn, username });
   } catch (error) {
     res.status(500).send({ error: error.message });
   }

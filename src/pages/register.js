@@ -20,7 +20,7 @@ const Register = (props) => {
       const { lastID, error } = await response.json();
       
       if (!lastID || error) {
-        throw new Error(error || 'Could not create user!');
+        throw new Error('Could not create user');
       }
    
       dispatch({ type: 'SET_GLOBAL_MESSAGE', payload: { 

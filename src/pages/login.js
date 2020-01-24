@@ -1,10 +1,12 @@
-import React, { Fragment, useState, useContext } from 'react';
+import React, { useState, useContext } from 'react';
+import classNames from 'classnames';
 import UserForm from '../components/user-form';
 import { AppContext } from '../App';
 
 const Login = (props) => {
   const { dispatch } = useContext(AppContext);
   const [ formError, setFormError ] = useState(null);
+  const [ loading, setLoading ] = useState(false);
   
   const submitFormData = async (formData) => {
     try {
@@ -18,9 +20,9 @@ const Login = (props) => {
       });
       
       const { isLoggedIn, username, error } = await response.json();
-  
+        
       if (!isLoggedIn || error) {
-        throw new Error(error || 'Username or password is invalid!');
+        throw new Error(error);
       }
       
       dispatch({ type: 'SET_USER', payload: { username } });
@@ -31,13 +33,15 @@ const Login = (props) => {
   }
 
   return (
-    <Fragment>
+    <div className={classNames({
+      'is-loading': loading
+    })}>
       <h1>Login</h1>
       <UserForm 
         onValidationSuccess={submitFormData} 
         formError={formError}
       />
-    </Fragment>
+    </div>
   );
 };
 
