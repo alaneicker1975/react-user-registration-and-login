@@ -42,7 +42,7 @@ const Dashboard = (props) => {
 
       dispatch({ 
         type: 'SET_GLOBAL_MESSAGE', 
-        payload: { text: 'You\'ve been logged out', type: 'info' }
+        payload: { text: 'You\'ve been logged out', type: 'confirmation' }
       });
       
       props.history.push('/login');
