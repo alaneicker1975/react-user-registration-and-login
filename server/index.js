@@ -28,7 +28,8 @@ app.use(`${baseUrl}/users`, verifyUserRoute);
 
 // Catchs all errors thrown and sends them
 // as part of the response object
-app.use((error, req, res) => {
+// eslint-disable-next-line no-unused-vars
+app.use((error, req, res, next) => {
   res.status(500).send({ error: error.message });
 });
 

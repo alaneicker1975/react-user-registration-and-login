@@ -1,6 +1,5 @@
 import { Router } from 'express';
 import jwt from 'jsonwebtoken';
-import jwtSignature from '../../jwt-signature';
 import passwordHash from 'bcrypt-password-hash';
 import dbPromise from '../../db-connection';
 
@@ -22,7 +21,7 @@ router.post('/authenticate', async (req, res) => {
     const isLoggedIn = await passwordHash.compare(password, data.password);
     const isAdmin = data.isAdmin;
 
-    const token = jwt.sign({ username, isAdmin }, jwtSignature, {
+    const token = jwt.sign({ username, isAdmin }, process.env.JWT_SIGNATURE, {
       expiresIn: 1800,
     });
 
