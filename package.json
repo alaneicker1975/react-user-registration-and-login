@@ -8,7 +8,9 @@
     "start:server": "NODE_ENV=development nodemon --exec babel-node ./server",
     "start:dev": "parcel src/index.html",
     "start": "NODE_ENV=production node ./dist/server",
-    "migrate": "node ./migrate.js"
+    "migrate": "node ./migrate.js",
+    "test": "jest --watchAll --coverage --config=./jest/jest.config.js",
+    "lint": "eslint 'src/**/*.js' --ignore-pattern '*.test.js'"
   },
   "keywords": [],
   "author": "",
@@ -42,10 +44,16 @@
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
     "babel-core": "^6.26.3",
+    "babel-jest": "^25.1.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
+    "jest": "^25.1.0",
+    "jest-cli": "^25.1.0",
     "node-sass": "^4.13.0",
     "nodemon": "^1.19.4",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "whatwg-fetch": "^3.0.0"
   }
 }
