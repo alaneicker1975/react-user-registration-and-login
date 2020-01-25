@@ -1,4 +1,5 @@
 import React, { Fragment, useContext, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { verifyUser } from '../../actions/verify-user';
 import UserList from '../../components/user-list';
 import { AppContext } from '../../App';
@@ -66,6 +67,10 @@ const Dashboard = props => {
         : null}
     </Fragment>
   );
+};
+
+Dashboard.propTypes = {
+  history: PropTypes.object,
 };
 
 export default Dashboard;

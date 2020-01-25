@@ -1,4 +1,5 @@
 import React, { useState, useContext, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import UserForm from '../../components/user-form';
 import { AppContext } from '../../App';
@@ -43,11 +44,15 @@ const Login = props => {
         onValidationSuccess={submitFormData} 
         formError={formError}
       />
-      <p className="text-align-center text-size-14"
-        >Don't have an account? <Link to="/register">Register</Link>
+      <p className="text-align-center text-size-14">
+        {'Don\'t have an account?'} <Link to="/register">Register</Link>
       </p>
     </Fragment>
   );
+};
+
+Login.propTypes = {
+  history: PropTypes.object,
 };
 
 export default Login;

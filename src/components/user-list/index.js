@@ -1,5 +1,4 @@
 import React, { useEffect, useContext } from 'react';
-import classNames from 'classnames';
 import { AppContext } from '../../App';
 
 import './user-list.scss';

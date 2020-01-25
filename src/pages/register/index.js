@@ -1,4 +1,5 @@
 import React, { Fragment, useState, useContext } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import UserForm from '../../components/user-form';
 import { AppContext } from '../../App';
@@ -52,6 +53,10 @@ const Register = props => {
       </p>
     </Fragment>
   );
+};
+
+Register.propTypes = {
+  history: PropTypes.object,
 };
 
 export default Register;

@@ -12,17 +12,19 @@ const Alert = props => {
   );
 };
 
-Alert.protoTypes = {
+Alert.propTypes = {
   text: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element,
   ]),
   align: PropTypes.string,
+  type: PropTypes.string,
 };
 
 Alert.defaultProps = {
-  text: null,
-  align: null,
+  text: '',
+  align: 'left',
+  type: 'info',
 };
 
 export default Alert;

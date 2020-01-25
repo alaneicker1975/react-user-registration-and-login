@@ -28,7 +28,7 @@ app.use(`${baseUrl}/users`, verifyUserRoute);
 
 // Catchs all errors thrown and sends them
 // as part of the response object
-app.use((error, req, res, next) => {
+app.use((error, req, res) => {
   res.status(500).send({ error: error.message });
 });
 
