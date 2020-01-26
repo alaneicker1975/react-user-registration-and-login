@@ -54,6 +54,7 @@
     "node-sass": "^4.13.0",
     "nodemon": "^1.19.4",
     "parcel-bundler": "^1.12.4",
+    "react-test-renderer": "^16.12.0",
     "whatwg-fetch": "^3.0.0"
   }
 }
