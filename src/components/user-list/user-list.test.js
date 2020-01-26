@@ -33,11 +33,7 @@ describe('UserList', () => {
   });
 
   it('Should fetch users and render to a list', async done => {
-    const mockSuccessResponse = [
-      { username: 'bobsmith', isAdmin: 0 },
-      { username: 'paulblack', isAdmin: 1 },
-    ];
-
+    const mockSuccessResponse = [];
     const mockJsonPromise = Promise.resolve(mockSuccessResponse); 
     const mockFetchPromise = Promise.resolve({ 
       json: () => mockJsonPromise,
