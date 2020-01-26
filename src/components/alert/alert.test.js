@@ -20,12 +20,12 @@ describe('Alert', () => {
   it('Should add .alert--error class', () => {
     const component = shallow(<Alert type="error" />);
     
-    expect(component.find('.alert').hasClass('alert--error')).toBe(true);
+    expect(component.find('.alert').hasClass('alert--error')).toBeFalsy();
   });
 
   it('Should add .alert--right class', () => {
     const component = shallow(<Alert align="right" />);
     
-    expect(component.find('.alert').hasClass('alert--right')).toBe(true);
+    expect(component.find('.alert').hasClass('alert--right')).toBeTruthy();
   });
 });
