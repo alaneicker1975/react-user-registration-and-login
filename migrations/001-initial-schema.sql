@@ -16,7 +16,7 @@ INSERT INTO Users (
   isAdmin
 ) VALUES (
   'alaneicker',
-  'bcrypt$2b$14$.5OgqP0JeLVbd/6qQ6O4S.SQyTjQkG/LSBFH3MjLR6G8mnGo1vMFG',
+  '$2a$10$Orj1c482V61RTe5GiFVX..cpWd1nVy44gS9bgTnJAie8V9SrlfoUe',
   1
 );
 

@@ -1,4 +1,4 @@
-import passwordHash from 'bcrypt-password-hash';
+import passwordHash from 'bcrypt-node';
 import dbPromise from '../../db-connection';
 import { Router } from 'express';
 
@@ -9,20 +9,23 @@ router.post('/create', async (req, res) => {
     const { username, password } = req.body;
 
     const db = await dbPromise;
-    
-    const { lastID } = await db.run(
+
+    const {
+      lastID,
+    } = await db.run(
       'INSERT INTO Users (username, password, isAdmin) VALUES (?,?,0)',
-      [username, await passwordHash.hash(password, { saltRounds: 14 })]
+      [username, passwordHash.hashSync(password)],
     );
 
     res.status(200).send({ lastID });
   } catch (error) {
-    res.status(500).send({ 
-      error: error.code === 'SQLITE_CONSTRAINT' 
-        ? 'Username already exists' 
-        : error.message
+    res.status(500).send({
+      error:
+        error.code === 'SQLITE_CONSTRAINT'
+          ? 'Username already exists'
+          : error.message,
     });
   }
 });
-  1
+1;
 export default router;

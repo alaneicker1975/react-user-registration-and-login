@@ -17,7 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/runtime-corejs3": "^7.8.3",
-    "bcrypt-password-hash": "^1.0.0",
+    "bcrypt-node": "^0.1.0",
     "body-parser": "^1.18.3",
     "classnames": "^2.2.6",
     "cookie-parser": "^1.4.4",
@@ -32,7 +32,8 @@
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-router-dom": "^5.1.2",
-    "sqlite": "^3.0.3",
+    "sqlite": "^3.0.6",
+    "sqlite3": "^4.2.0",
     "yup": "^0.27.0"
   },
   "devDependencies": {
@@ -55,6 +56,7 @@
     "nodemon": "^1.19.4",
     "parcel-bundler": "^1.12.4",
     "react-test-renderer": "^16.12.0",
+    "sass": "^1.26.7",
     "whatwg-fetch": "^3.0.0"
   }
 }

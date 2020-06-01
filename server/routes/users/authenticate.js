@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import jwt from 'jsonwebtoken';
-import passwordHash from 'bcrypt-password-hash';
+import passwordHash from 'bcrypt-node';
 import dbPromise from '../../db-connection';
 
 const router = Router();
@@ -12,13 +12,16 @@ router.post('/authenticate', async (req, res) => {
     const { username, password } = req.body;
 
     const db = await dbPromise;
-    const data = await db.get('SELECT password, isAdmin FROM Users WHERE username = ?', username);
-    
+    const data = await db.get(
+      'SELECT password, isAdmin FROM Users WHERE username = ?',
+      username,
+    );
+
     if (!data) {
       throw new Error(authenticationError);
     }
-    
-    const isLoggedIn = await passwordHash.compare(password, data.password);
+
+    const isLoggedIn = passwordHash.compareSync(password, data.password);
     const isAdmin = data.isAdmin;
 
     const token = jwt.sign({ username, isAdmin }, process.env.JWT_SIGNATURE, {
