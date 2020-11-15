@@ -13,5 +13,5 @@ router.get('/verify', (req, res) => {
     });
   });
 });
-  1
+  
 export default router;
