@@ -4,7 +4,7 @@ import { Router } from 'express';
 
 const router = Router();
 
-router.post('/create', async (req, res) => {
+router.put('/create', async (req, res) => {
   try {
     const { username, password } = req.body;
 
@@ -17,7 +17,7 @@ router.post('/create', async (req, res) => {
       [username, passwordHash.hashSync(password)],
     );
 
-    res.status(200).send({ lastID });
+    res.status(201).send({ lastID });
   } catch (error) {
     res.status(500).send({
       error:
