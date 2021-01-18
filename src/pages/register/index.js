@@ -13,7 +13,7 @@ const Register = props => {
       dispatch({ type: 'SHOW_OVERLAY', payload: true });
 
       const response = await fetch('http://localhost:6060/api/v1/users/create', {
-        method: 'POST',
+        method: 'PUT',
         headers: {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
